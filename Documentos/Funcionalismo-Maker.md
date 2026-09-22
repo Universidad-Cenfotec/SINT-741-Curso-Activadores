@@ -41,6 +41,3 @@ La tecnología es un medio, la creatividad es el proceso y el conocimiento compa
 
 Esta formulación conserva el espíritu del funcionalismo arquitectónico, pero incorpora tres dimensiones esenciales de la cultura maker: el aprendizaje mediante la construcción, la experimentación continua y la creación colectiva de conocimiento.
 
-<p align="center">
-  <img src="assets/logo_cenfotec_color.png" alt="Universidad Cenfotec" width="140">
-</p>
