@@ -2,7 +2,7 @@
   <img src="img/logo-cenfotec.png" alt="Fundacion CENFOTEC" height="60">
     &nbsp;&nbsp;&nbsp;&nbsp;
       <img src="img/logo-senacyt.png" alt="SENACYT" height="52">
-</div>div>
+</div>
 
 ---
 
