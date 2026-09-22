@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/logo_cenfotec_color.png" alt="Universidad Cenfotec" width="260">
-</p>
-
 # Principios de diseño maker
 
 ### Inspirados en Ken Isaacs y Enzo Mari
