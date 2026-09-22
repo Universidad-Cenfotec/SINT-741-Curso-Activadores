@@ -1,4 +1,200 @@
+<div align="center"><div align="center">
+  <img src="img/logo-cenfotec.png" alt="Fundacion CENFOTEC" height="60">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="img/logo-senacyt.png" alt="SENACYT" height="52">
+</div>
+
+---
+
+# Guia para estudiantes: como subir tus trabajos al repositorio del curso
+
+**SINT-741 — Curso Activadores** · Universidad Cenfotec
+
+Esta guia explica, paso a paso, como entregar tus trabajos en el repositorio del curso. Cada estudiante tiene su propia subcarpeta dentro de `5. Estudiantes/` — **el profesor la crea con tu nombre antes de que empieces**. Todo lo que entregues va dentro de esa carpeta.
+
+Hay dos formas de hacerlo. **Empieza por la Parte A**: funciona desde el navegador y no requiere instalar nada. La Parte B es para cuando quieras trabajar con Git desde tu computadora.
+
+---
+
+## Antes de empezar
+
+Necesitas una cuenta de GitHub. Si no tienes, creala en https://github.com/signup (es gratis). Avisale al profesor cual es tu usuario para que pueda asignarte tu carpeta.
+
+### Como funciona la entrega
+
+No vas a escribir directamente en el repositorio del curso. El flujo es este:
+
+**Fork** — haces una copia del repositorio del curso en tu propia cuenta.
+
+**Cambios** — subes tus archivos a *tu* copia.
+
+**Pull Request** — le pides al profesor que incorpore tus cambios al repositorio del curso.
+
+**Revision** — el profesor revisa, comenta si hace falta, y acepta la entrega.
+
+Es el mismo mecanismo que usan los equipos de desarrollo en la industria. Aprenderlo es parte del curso.
+
+### Tres palabras clave
+
+| Palabra | Que significa |
+|---------|---------------|
+| **Fork** | Tu copia personal del repositorio. Puedes hacer lo que quieras sin afectar el original. |
+| **Commit** | Un cambio guardado con un mensaje descriptivo. |
+| **Pull Request (PR)** | La solicitud para que tus cambios pasen al repositorio del curso. |
+
+---
+
+## Parte A — Desde el navegador
+
+> Recomendado para empezar. No necesitas instalar nada.
+
+### Paso 1. Haz tu fork
+
+Entra al repositorio del curso y haz clic en **Fork** arriba a la derecha.
+
+```
+https://github.com/Universidad-Cenfotec/SINT-741-Curso-Activadores
+```
+
+![Figura 1.](img/screenshot-1790097334387-0.jpg)
+
+*Figura 1. El boton Fork esta arriba a la derecha, junto a Watch y Star.*
+
+Deja todo como esta y haz clic en **Create fork**.
+
+![Figura 2.](img/screenshot-1790097357276-1.jpg)
+
+*Figura 2. Pantalla de creacion del fork. El Owner debe ser tu propio usuario.*
+
+> **Esto se hace una sola vez en todo el curso.** Para las entregas siguientes ya tienes tu fork listo.
+
+### Paso 2. Entra a tu carpeta
+
+En tu fork, navega a `5. Estudiantes/` y abre la subcarpeta con tu nombre. Todo lo que entregues va ahi adentro. No subas archivos fuera de tu carpeta ni modifiques las carpetas de tus companeros.
+
+### Paso 3. Sube tus archivos
+
+Haz clic en **Add file** y elige **Upload files**.
+
+![Figura 3.](img/screenshot-1790097382372-2.jpg)
+
+*Figura 3. Menu Add file con la opcion Upload files.*
+
+Arrastra tus archivos a la zona punteada, o haz clic en **choose your files**. Puedes subir varios archivos y carpetas a la vez.
+
+![Figura 4.](img/screenshot-1790097398803-3.jpg)
+
+*Figura 4. Zona de carga: arrastra los archivos aqui.*
+
+### Paso 4. Guarda el cambio y crea el Pull Request
+
+Baja hasta **Commit changes** al final de la pagina.
+
+1. Escribe un mensaje claro: `Entrega laboratorio 2 - Tu Nombre`
+2. Selecciona **Create a new branch for this commit and start a pull request**
+3. Haz clic en **Propose changes**
+
+![Figura 5.](img/screenshot-1790097448182-4.jpg)
+
+*Figura 5. Elige la segunda opcion. Es la que permite abrir el Pull Request.*
+
+> Si dejas la primera opcion, el cambio queda solo en tu copia y el profesor no lo recibe.
+
+### Paso 5. Abre el Pull Request
+
+Verifica que la flecha apunte **desde tu fork hacia** `Universidad-Cenfotec/SINT-741-Curso-Activadores`, **rama** `main`. Pon un titulo claro y haz clic en **Create pull request**.
+
+![Figura 6.](img/screenshot-1790097459893-5.jpg)
+
+*Figura 6. Revisa bien el origen y el destino antes de crear el PR.*
+
+Tu entrega quedo registrada con fecha y hora.
+
+### Paso 6. Que pasa despues
+
+**Lo acepta (merge).** Tus archivos pasan al repositorio del curso. Entrega completa.
+
+**Te deja comentarios.** Haz los ajustes y sube los archivos corregidos *a la misma rama*. El PR se actualiza solo, no abras uno nuevo.
+
+**Te pide algo puntual.** Responde en el mismo hilo del PR.
+
+### Para la siguiente entrega: actualiza tu fork
+
+Haz clic en **Sync fork** > **Update branch** en tu fork antes de empezar un trabajo nuevo.
+
+---
+
+## Parte B — Con Git desde tu computadora
+
+Mas comodo cuando entregas codigo o muchos archivos, y es la forma en que se trabaja profesionalmente.
+
+### Instalacion por unica vez
+
+1. Descarga Git de https://git-scm.com/downloads e instalalo con las opciones por defecto.
+2. Cierra y vuelve a abrir la terminal.
+3. Configura tu identidad:
+
+```bash
+git config --global user.name "Tu Nombre"
+git config --global user.email "tucorreo@ejemplo.com"
+```
+
+### Preparacion por unica vez
+
+```bash
+git clone https://github.com/TU-USUARIO/SINT-741-Curso-Activadores.git
+cd SINT-741-Curso-Activadores
+git remote add upstream https://github.com/Universidad-Cenfotec/SINT-741-Curso-Activadores.git
+```
+
+### Flujo de cada entrega
+
+```bash
+git checkout main
+git pull upstream main
+git push origin main
+git checkout -b entrega-lab-02
+git add .
+git commit -m "Entrega laboratorio 2 - Tu Nombre"
+git push origin entrega-lab-02
+```
+
+Luego abre el PR desde tu fork con **Compare & pull request**.
+
+---
+
+## Reglas del curso
+
+| Regla | Detalle |
+|-------|---------|
+| Donde van los archivos | Solo dentro de tu subcarpeta en `5. Estudiantes/`. Las carpetas 1 a 4 son del profesor. |
+| Nombres de archivos | Minuscula y guiones, sin espacios ni tildes: `lab-02-informe.pdf` |
+| Un PR por entrega | No mezcles dos trabajos en el mismo Pull Request. |
+| Mensajes con sentido | Que se entienda que hiciste sin abrir el archivo. |
+| Lo que no se sube | `node_modules/`, contrasenas, tokens, datos personales. |
+
+> **Este repositorio es publico.** Revisa siempre tus archivos antes de entregarlos.
+
+---
+
+## Problemas frecuentes
+
+| Problema | Que hacer |
+|----------|-----------|
+| No veo el boton Fork | Asegurate de haber iniciado sesion en GitHub. |
+| Subi el archivo pero no aparece en el repo del curso | Falta el PR (Paso 5) y que el profesor lo acepte. |
+| "This branch is out-of-date" | Usa **Sync fork** en la web, o `git pull upstream main` en la terminal. |
+| Me equivoque de carpeta | Abre el archivo, haz clic en el lapiz y escribe la ruta correcta. |
+| Subi algo que no debia | Avisale al profesor **antes** de abrir el PR. Borrar no alcanza: queda en el historial. |
+| El PR apunta a la rama equivocada | Verifica que el destino sea `Universidad-Cenfotec/SINT-741-Curso-Activadores` rama `main`. |
+
+Ante cualquier duda, pregunta en clase o abre un *Issue*. Equivocarse aca no rompe nada.
+
+---
+
 <div align="center">
+  <sub>SINT-741 Curso Activadores · Universidad Cenfotec · Financiado por SENACYT</sub>
+</div>
   <img src="img/logo-cenfotec.png" alt="Fundacion CENFOTEC" height="60">
     &nbsp;&nbsp;&nbsp;&nbsp;
       <img src="img/logo-senacyt.png" alt="SENACYT" height="52">
