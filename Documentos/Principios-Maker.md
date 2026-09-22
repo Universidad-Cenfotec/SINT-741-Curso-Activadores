@@ -69,7 +69,3 @@ Entendemos que construir es aprender, que modificar es crear y que compartir per
 > El mejor resultado de un proyecto maker es que otras personas puedan hacer algo que antes no podían hacer.
 
 Esta última idea reúne la dimensión educativa de Mari, la autonomía constructiva de Isaacs y el papel de las comunidades de práctica en el movimiento maker contemporáneo.
-
-<p align="center">
-  <img src="assets/logo_cenfotec_color.png" alt="Universidad Cenfotec" width="140">
-</p>
