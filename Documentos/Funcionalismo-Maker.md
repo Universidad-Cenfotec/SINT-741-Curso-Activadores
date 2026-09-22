@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/logo_cenfotec_color.png" alt="Universidad Cenfotec" width="260">
-</p>
-
 # Los 7 principios del funcionalismo maker
 
 *Adaptación: Tomás de Camino Beck, Ph.D. — Universidad Cenfotec*
