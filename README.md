@@ -28,7 +28,7 @@ El curso está diseñado por competencias y alineado con el marco SFIA8, en el �
 La forma en que se construye y documenta esta comunidad se apoya en dos marcos de principios de diseño maker, adaptados como guía conceptual para el curso — la idea de que una comunidad, como cualquier sistema, se diseña para que quienes participan en ella puedan comprenderla, construirla, modificarla y sostenerla por sí mismos:
 
 - [`principios_diseno_maker_cenfotec.md`](principios_diseno_maker_cenfotec.md) — los diez principios de diseño maker inspirados en Ken Isaacs y Enzo Mari.
-- [`funcionalismo_maker_cenfotec.md`](funcionalismo_maker_cenfotec.md) — los siete principios del funcionalismo maker.
+- [`funcionalismo_maker_cenfotec.md`](https://github.com/Universidad-Cenfotec/SINT-741-Curso-Activadores/blob/main/2.%20Documentos/Funcionalismo-Maker.md) — los siete principios del funcionalismo maker.
 
 *Adaptación: Tomás de Camino Beck, Ph.D. — Universidad Cenfotec*
 
