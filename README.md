@@ -59,6 +59,19 @@ Developer Relations (DevRel) · Community Manager Técnico · Facilitador de Apr
 - Wenger, E., McDermott, R. A., & Snyder, W. M. (2002). *Cultivating Communities of Practice: A Guide to Managing Knowledge*. Harvard Business Press.
 - SFIA Foundation (2021). *Skills Framework for the Information Age — Knowledge Management (KNOW)*.
 
+## Cronograma
+
+| Semana | Fecha | Tema de la clase | Trabajo en clase | Evidencia del participante |
+|---|---|---|---|---|
+| 1 | 24 de septiembre | Presentación del curso, de los participantes e introducción a las comunidades de práctica | Compartir experiencias previas, intereses y proyectos. Distinguir entre audiencia, grupo, curso y comunidad de práctica. Introducir el proyecto del curso y el repositorio `mi-comunidad`. | Presentación personal breve y primera idea de una práctica compartida alrededor de la cual podría activarse una comunidad. |
+| 2 | 1 de octubre | Dominio, comunidad, práctica y trayectorias de participación | Identificar problemas compartidos, posibles participantes y formas de entrar a la comunidad, desde observar y preguntar hasta contribuir y acompañar. | Mapa de Comunidad inicial en GitHub, con propósito, práctica, participantes potenciales y trayectorias de participación. |
+| 3 | 8 de octubre | De la audiencia a la participación | Diseñar invitaciones orientadas a la acción y una escalera de contribuciones accesible para personas con distintos niveles de experiencia. Formular la hipótesis de una primera activación. | Convocatoria, escalera de participación y plan del primer experimento de activación publicados en el repositorio. |
+| 4 | 15 de octubre | Rituales y facilitación entre pares | Ensayar un *Show & Tell*, una clínica de errores u otro ritual recurrente. Practicar preguntas, conexiones entre participantes y reconocimiento de contribuciones. | Registro de una activación ejecutada o ensayada, con participantes, interacciones observadas y una primera reflexión sobre lo ocurrido. |
+| 5 | 22 de octubre | *Show Your Work!* y aprendizaje en público | Compartir procesos, intentos, errores y descubrimientos. Identificar conocimiento valioso surgido de la activación que pueda servir a otras personas. | Publicación breve que muestre el proceso de trabajo y selección justificada de una experiencia para convertirla en recurso reutilizable. |
+| 6 | 29 de octubre | GitHub, inteligencia artificial y memoria colectiva | Transformar una conversación, solución o experimento en una guía, FAQ, plantilla, ejemplo u otro recurso comprensible y reproducible. Revisar y atribuir el contenido producido con apoyo de IA. | Recurso reutilizable publicado en `recursos/`, enlazado desde el README y acompañado de su contexto de origen. |
+| 7 | 5 de noviembre | Observar, evaluar y adaptar la comunidad | Comparar la hipótesis de activación con lo sucedido. Examinar recurrencia, ayuda entre pares, contribuciones y reutilización de recursos. Ajustar el siguiente experimento. | Bitácora de retrospectiva con evidencias de interacción, interpretación de resultados y propuesta de ajuste para una nueva activación. |
+| 8 | 12 de noviembre | Sostenibilidad y autonomía colectiva | Presentar los proyectos, compartir aprendizajes y diseñar cómo distribuir la facilitación, recibir nuevos miembros y mantener la práctica recurrente. | Repositorio `mi-comunidad` consolidado y Plan de Evolución con próximos rituales, responsabilidades compartidas y señales para observar el crecimiento de la comunidad. |
+
 ---
 
 <p align="center"><sub>Universidad Cenfotec · Escuela de Sistemas Inteligentes</sub></p>
