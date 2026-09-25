@@ -6,7 +6,7 @@ Presentaciones utilizadas en las sesiones del curso SINT-741 — Curso Activador
 
 | Sesion | Tema | Archivo |
 |--------|------|---------|
-| 1 | Introducción | [Clase 1](https://github.com/Universidad-Cenfotec/SINT-741-Curso-Activadores/blob/main/1.%20Presentaciones%20de%20clase/Clase%201_%20Introducci%C3%B3n.pdf) |
+| 1 | Introducción | [Clase 1](https://github.com/Universidad-Cenfotec/SINT-741-Curso-Activadores/blob/main/1.%20Presentaciones%20de%20clase/S01-introduccion.pdf) |
 
 ## Convencion de nombres
 
