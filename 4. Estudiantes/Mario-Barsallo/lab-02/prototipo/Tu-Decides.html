@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tú Decides: un juego narrativo sobre una lata y dos caminos para nuestro entorno.">
+<title>Tú Decides · Una lata, dos caminos</title>
+<style>
+:root{--paper:#fcf8ee;--ink:#203e37;--muted:#52655f;--green:#206646;--orange:#9b4927;--line:#d8dece;--yellow:#f2c95c}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Trebuchet MS',Verdana,sans-serif}button{font:inherit;cursor:pointer;min-height:48px;border:0}button:focus-visible,textarea:focus-visible{outline:4px solid #1c67bd;outline-offset:5px}button:hover{filter:brightness(.94)}button:active{transform:translateY(2px)}[hidden]{display:none!important}
+main{max-width:1180px;margin:auto;padding:24px 32px 32px}header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:grid;place-items:center;font-size:26px}.brand strong{display:block;font-size:24px;letter-spacing:-1px}.brand small{font-size:11px;font-weight:bold;letter-spacing:1.7px;color:var(--muted);text-transform:uppercase}.tools{display:flex;gap:10px}.quiet{background:transparent;border:1px solid var(--line);border-radius:30px;padding:10px 18px;font-size:14px;color:var(--ink)}
+.stage{position:relative;overflow:hidden;border-radius:20px;background:#d4e8e5;border:1px solid #cbd9ca}.scene{display:block;width:100%;height:auto;min-height:240px}.scene .sky{fill:#d4e8e5;transition:fill 1.2s}.scene .hill{fill:#8cb88b;transition:fill 1.2s}.scene .grass{fill:#b0c894;transition:fill 1.2s}.scene .water{fill:#70b8b9;transition:fill 1.2s}.scene .leaf{fill:#478b60;transition:fill 1.2s}.scene .sun{fill:#f2c95c;transition:fill 1.2s}.scene .trash{opacity:0;transition:opacity 1s}.scene .flowers{opacity:.35;transition:opacity 1s}.scene .bird{transition:opacity 1s}.scene .can-moving{transform-box:fill-box;transform-origin:center;transition:transform 1.1s ease-in-out}.scene .brow,.scene .sad-mouth{opacity:0}.scene .smile{opacity:1}.scene .happy-glow{opacity:0;transition:opacity 1s}
+[data-world="clean"] .sky{fill:#cdece9}[data-world="clean"] .hill{fill:#6dad79}[data-world="clean"] .grass{fill:#9cc87d}[data-world="clean"] .flowers,[data-world="clean"] .happy-glow{opacity:1}[data-world="clean"] .can-moving{transform:translate(161px,26px) rotate(5deg);opacity:0;transition:transform 1.1s ease-in-out,opacity .3s .9s}[data-world="dirty"] .sky{fill:#c6c9c3}[data-world="dirty"] .hill{fill:#979e7c}[data-world="dirty"] .grass{fill:#b2af85}[data-world="dirty"] .water{fill:#8b9b88}[data-world="dirty"] .leaf{fill:#8b9972}[data-world="dirty"] .sun{fill:#d2c6a0}[data-world="dirty"] .trash{opacity:1}[data-world="dirty"] .flowers,[data-world="dirty"] .bird,[data-world="dirty"] .smile{opacity:0}[data-world="dirty"] .brow,[data-world="dirty"] .sad-mouth{opacity:1}[data-world="dirty"] .can-moving{transform:translate(40px,139px) rotate(12deg)}
+.scene-tag{position:absolute;top:22px;left:24px;background:var(--paper);border-radius:22px;padding:9px 15px;font-size:12px;letter-spacing:1px;font-weight:bold;text-transform:uppercase}.intro-caption{position:absolute;top:75px;left:26px;max-width:310px}.intro-caption h1{font-size:clamp(28px,4.4vw,52px);line-height:1.05;letter-spacing:-2px;margin:0 0 14px}.intro-caption p{font-size:16px;line-height:1.5;margin:0;max-width:260px}.scene-note{position:absolute;right:20px;bottom:16px;background:#fcf8eee8;padding:8px 12px;border-radius:20px;font-size:13px;font-weight:bold}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:27px 4px 18px}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:bold;text-transform:uppercase;color:var(--green);margin:0 0 10px}h2{font-size:clamp(23px,3vw,32px);letter-spacing:-.8px;line-height:1.17;margin:0 0 12px}.copy{font-size:16px;line-height:1.6;color:var(--muted);margin:0}.actions{display:flex;gap:12px}.primary{background:var(--green);color:#fff;padding:16px 25px;border-radius:12px;font-weight:bold;font-size:17px}.start{width:100%;display:flex;align-items:center;justify-content:space-between;min-height:70px}.choice{flex:1;min-height:108px;text-align:left;border-radius:12px;padding:18px 20px;font-weight:bold;font-size:18px}.choice span{display:block;font-size:13px;margin-top:9px;font-weight:normal;line-height:1.4}.recycle{background:var(--green);color:white}.litter{background:#f3e4ce;color:#623822;border:1px solid #dac8af}.kbd{display:inline-grid!important;place-items:center!important;width:25px;height:25px;border:1px solid currentColor;border-radius:6px;font-size:12px!important;margin:0 8px 0 0!important;opacity:.8}.result-buttons{display:flex;flex-direction:column;gap:10px}.reflection{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;line-height:1.5}.reflection strong{display:block;margin-bottom:4px}footer{border-top:1px solid var(--line);padding-top:15px;display:flex;justify-content:space-between;gap:15px;color:var(--muted);font-size:11px;line-height:1.6}.progress{display:flex;gap:7px;align-items:center}.dot{width:7px;height:7px;border-radius:50%;background:#c6cebf}.dot.active{background:var(--green)}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(max-width:650px){main{padding:16px}.brand strong{font-size:21px}.brand small{font-size:9px;letter-spacing:1px}.tools .quiet{padding:8px 12px;font-size:12px}.panel{grid-template-columns:1fr;gap:20px;padding-top:23px}.intro-caption{top:65px;left:18px;max-width:150px}.intro-caption h1{font-size:28px;letter-spacing:-1px}.intro-caption p{font-size:12px;max-width:145px}.scene-tag{top:14px;left:14px;font-size:10px}.scene{height:300px;object-fit:cover;object-position:54%}.scene-note{font-size:10px;right:10px;bottom:10px}.choice{padding:16px 12px;font-size:16px;min-height:105px}.choice span{font-size:12px}footer{flex-direction:column;gap:8px}h2{font-size:25px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand"><span class="mark" aria-hidden="true">↗</span><div><strong>Tú Decides</strong><small>Pequeñas decisiones. Otro mundo.</small></div></div><div class="tools"><button id="sound" class="quiet" aria-pressed="false" type="button">Sonido: apagado</button></div></header>
+<section class="stage" id="stage" data-world="neutral" aria-label="Parque donde ocurre la historia">
+<span class="scene-tag" id="tag">Tu aventura comienza aquí</span>
+<div class="intro-caption" id="intro-caption"><h1>Una lata.<br>Dos caminos.</h1><p>Conoce a Nico. El futuro de este pequeño parque está en tus manos.</p></div>
+<svg class="scene" viewBox="0 0 1100 460" role="img" aria-labelledby="scene-title scene-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="scene-title">Nico y el parque</title><desc id="scene-desc">Nico tiene una lata vacía. A su derecha hay un contenedor para reciclar.</desc>
+<defs><pattern id="grass-texture" width="80" height="52" patternUnits="userSpaceOnUse"><path d="M8 35l3-5 4 5M50 10l3-6 4 6" fill="none" stroke="#52774c" opacity=".2" stroke-width="2"/></pattern></defs>
+<rect class="sky" width="1100" height="460"/>
+<circle class="sun" cx="877" cy="86" r="41"/>
+<g fill="#fcf8ee" opacity=".8"><path d="M530 71c-12-24-39-21-43-2-20-5-33 10-30 20h114c1-19-19-25-41-18Z"/><path d="M1010 154c-11-19-33-22-43-3-19-7-31 6-30 15h100c0-14-15-21-27-12Z"/></g>
+<path class="hill" d="M0 246Q170 161 362 226T724 211T1100 210V460H0Z"/>
+<path fill="#769e7c" opacity=".4" d="M0 266Q259 220 450 283T1100 228V460H0Z"/>
+<path class="grass" d="M0 308Q244 272 460 314T1100 270V460H0Z"/>
+<path fill="url(#grass-texture)" d="M0 308Q244 272 460 314T1100 270V460H0Z"/>
+<path class="water" d="M0 352Q116 319 219 348T440 371Q313 429 0 438Z"/>
+<path d="M36 376h74m29 16h71m-126 23h62" stroke="#fcf8ee" stroke-width="3" opacity=".45" stroke-linecap="round"/>
+<g stroke="#785942" stroke-linecap="round"><path d="M376 330V170m0 57-39-34m39 19 33-36" stroke-width="17"/><path d="M988 310V158m0 45-30-24m30 44 33-39" stroke-width="14"/></g>
+<g class="leaf"><circle cx="370" cy="146" r="55"/><circle cx="333" cy="172" r="42"/><circle cx="412" cy="173" r="45"/><circle cx="983" cy="130" r="51"/><circle cx="955" cy="164" r="38"/><circle cx="1023" cy="164" r="42"/></g>
+<g fill="#b8d290" opacity=".4"><circle cx="351" cy="129" r="19"/><circle cx="399" cy="155" r="14"/><circle cx="977" cy="114" r="17"/></g>
+<g class="bird" fill="none" stroke="#416f60" stroke-width="3" stroke-linecap="round"><path d="M733 100q9-10 18 0q9-10 18 0M796 145q6-7 12 0q6-7 12 0"/></g>
+<path d="M511 460q63-77 218-124q63-19 101-17" fill="none" stroke="#e0cda7" stroke-width="67"/>
+<ellipse cx="598" cy="376" rx="58" ry="12" fill="#203e37" opacity=".13"/>
+<!-- Personaje original: Nico -->
+<g id="nico"><path d="M573 316l-8 46h24l11-44m5 0 8 45h23l-9-55" fill="#3e5e6e"/><path d="M562 359h30v13h-39q-2-8 9-13m52 0h24q17 3 16 13h-39Z" fill="#253f3a"/><path d="M559 257q35-19 66 0l7 62q-40 17-76 0Z" fill="#e5a94d"/><path d="M559 265l-21 36 13 8 20-31m51-11 18 33 26-23 8 10-31 34q-8 5-13-4l-19-29" fill="none" stroke="#b97450" stroke-width="16" stroke-linecap="round"/><path d="M588 241v19q10 8 20 0v-19" fill="#b97450"/><ellipse cx="599" cy="215" rx="35" ry="38" fill="#cc9163"/><path d="M565 215q-16-46 23-51q45-6 49 29l-11 25-7-27q-17 15-41 4l-9 24Z" fill="#343b30"/><circle cx="584" cy="220" r="3" fill="#273b32"/><circle cx="613" cy="220" r="3" fill="#273b32"/><path d="M596 223l-2 10h6" fill="none" stroke="#a56543" stroke-width="2"/><path class="smile" d="M588 239q10 9 20 0" stroke="#703f31" fill="none" stroke-width="3" stroke-linecap="round"/><path class="sad-mouth" d="M589 245q9-8 19 0" stroke="#703f31" fill="none" stroke-width="3" stroke-linecap="round"/><path class="brow" d="M579 211l11 3m19 0 10-3" stroke="#343b30" stroke-width="3"/><path d="M582 279h28" stroke="#fcf8ee" stroke-width="4" opacity=".6"/></g>
+<g class="can-moving"><rect x="662" y="260" width="19" height="31" rx="4" fill="#e9ece5" stroke="#527064" stroke-width="2"/><path d="M665 265h13m-13 21h13" stroke="#527064" stroke-width="2"/><path d="M672 271v8" stroke="#b96343" stroke-width="5"/></g>
+<!-- Contenedor identificado por material, no por un código de color regional -->
+<g><ellipse cx="832" cy="355" rx="50" ry="10" fill="#203e37" opacity=".13"/><path d="M795 266h75l-6 83h-62Z" fill="#316f53"/><path d="M790 257h84v15h-84Z" fill="#214e3d"/><rect x="807" y="249" width="49" height="10" rx="5" fill="#214e3d"/><rect x="803" y="282" width="59" height="42" rx="3" fill="#f8f4e7"/><text x="832" y="300" text-anchor="middle" font-family="Verdana,sans-serif" font-size="10" font-weight="bold" fill="#214e3d">LATAS</text><text x="832" y="317" text-anchor="middle" font-family="Verdana,sans-serif" font-size="18" fill="#214e3d">♻</text></g>
+<g class="flowers"><g stroke="#41774d" stroke-width="3"><path d="M484 350v-17m426 47v-20m-168 55v-19m298-58v-17m-593 69v-15"/></g><g fill="#fcf8ee"><circle cx="484" cy="330" r="7"/><circle cx="910" cy="356" r="7"/><circle cx="742" cy="393" r="7"/><circle cx="1040" cy="318" r="7"/><circle cx="447" cy="392" r="6"/></g><g fill="#e4ad40"><circle cx="484" cy="330" r="3"/><circle cx="910" cy="356" r="3"/><circle cx="742" cy="393" r="3"/><circle cx="1040" cy="318" r="3"/><circle cx="447" cy="392" r="3"/></g></g>
+<g class="trash" stroke="#8c755e" stroke-width="2"><path d="M498 386l22-7 13 14-27 5Z" fill="#dfc8b5"/><path d="M946 413l-7-18 18-6 13 14Z" fill="#f1ddbd"/><path d="M253 366l22-6 12 12-20 8Z" fill="#d9b0a1"/><rect x="731" y="347" width="13" height="26" rx="3" fill="#c9d7ce" transform="rotate(65 737 360)"/><path d="M1026 365l29 2-8 14-27-7Z" fill="#dbb797"/><path d="M408 428l-8-16 21-6 8 16Z" fill="#ded9bf"/><rect x="863" y="396" width="25" height="13" rx="3" fill="#c0cbc3" transform="rotate(-20 875 402)"/></g>
+<g class="happy-glow" stroke="#fcf8ee" stroke-width="3" stroke-linecap="round"><path d="M882 241v12m-6-6h12m-169-17v10m-5-5h10m202 53v12m-6-6h12"/></g>
+</svg>
+<span class="scene-note" id="scene-note">Mira el parque. Tu elección lo cambiará.</span>
+</section>
+<section class="panel" aria-label="Historia y decisiones">
+<div><p class="eyebrow" id="step-label">01 / Conoce la historia</p><h2 id="heading" tabindex="-1">Este parque tiene una historia.<br>Tú eliges cómo termina.</h2><p class="copy" id="story">Nico acaba de terminar su bebida. Tiene una lata vacía y una decisión por tomar. ¿Le ayudas?</p><div class="reflection" id="reflection" hidden><strong>Para conversar</strong><span id="reflection-text"></span></div></div>
+<div>
+<button class="primary start" id="start" type="button"><span>Comenzar la aventura</span><span aria-hidden="true">→</span></button>
+<div class="actions" id="choices" hidden><button class="choice recycle" id="recycle" type="button"><span class="kbd" aria-hidden="true">1</span>Reciclarla<span>Poner la lata en el contenedor de latas.</span></button><button class="choice litter" id="litter" type="button"><span class="kbd" aria-hidden="true">2</span>Tirarla al suelo<span>Dejar la lata en el parque.</span></button></div>
+<div class="result-buttons" id="results" hidden><button class="primary" id="reset" type="button">Volver a jugar ↻</button><p class="copy" style="font-size:13px">Prueba el otro camino y compara los dos finales.</p></div>
+</div>
+</section>
+<p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+<footer><span>Grupo 1 · Arte y cultura / CENFOTEC · SINT-741<br>Prototipo educativo. No recoge datos personales.</span><span class="progress" aria-label="Progreso de la historia"><i class="dot active"></i><i class="dot"></i><i class="dot"></i><span id="progress-label">Historia → Decisión → Consecuencia</span></span></footer>
+</main>
+<script id="game-engine">
+(function(root){
+  function transition(state, action){
+    if (!state || action === 'reset') return {phase:'intro',world:'neutral',choice:null};
+    if (action === 'start' && state.phase === 'intro') return {phase:'choice',world:'neutral',choice:null};
+    if (state.phase === 'choice' && (action === 'recycle' || action === 'litter')) return {phase:'ending',world:action === 'recycle' ? 'clean' : 'dirty',choice:action};
+    return state;
+  }
+  const api = {transition};
+  if(typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.TuDecides = api;
+})(typeof window !== 'undefined' ? window : this);
+</script>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+let state = TuDecides.transition(undefined,'reset');
+let sound = false, audio = null, timer = null, noteIndex = 0;
+const text = {
+ intro: {tag:'Tu aventura comienza aquí',step:'01 / Conoce la historia',heading:'Este parque tiene una historia. Tú eliges cómo termina.',story:'Nico acaba de terminar su bebida. Tiene una lata vacía y una decisión por tomar. ¿Le ayudas?',note:'Mira el parque. Tu elección lo cambiará.',desc:'Nico tiene una lata vacía. A su derecha hay un contenedor para reciclar.'},
+ choice: {tag:'Una pequeña decisión',step:'02 / Tú tienes el control',heading:'¿Qué haces con la lata?',story:'Nico mira el contenedor y luego el suelo. Elige un camino y observa qué pasa con el parque y con la música.',note:'Elige con los botones o las teclas 1 y 2.',desc:'Nico espera tu decisión: reciclar la lata o tirarla al suelo.'},
+ clean: {tag:'Final / Un parque para todos',step:'03 / Tu decisión deja huella',heading:'¡Un pequeño gesto, un gran comienzo!',story:'Nico coloca la lata en el contenedor. En este final, el parque se vuelve más verde, aparecen flores y la música suena armoniosa. El lugar sigue siendo un hogar para jugar y compartir.',note:'Elegiste cuidar este lugar.',desc:'El parque está limpio y verde, con flores. Nico ha puesto su lata en el contenedor.',question:'¿Qué cambió en el parque? ¿Dónde pondrías una lata vacía en tu comunidad?'},
+ dirty: {tag:'Final / Un parque que necesita ayuda',step:'03 / Tu decisión deja huella',heading:'La lata no desaparece al dejarla atrás.',story:'Nico tira la lata al suelo. En este final, aparece más basura, el parque pierde color y la música se vuelve caótica. La lata puede terminar en el agua. Pero siempre podemos elegir hacerlo mejor.',note:'El parque necesita que lo cuidemos.',desc:'La lata está en el suelo y hay basura en el parque. El paisaje ha perdido color y Nico está triste.',question:'¿Qué cambió en el parque? Si pudieras elegir otra vez, ¿qué harías y por qué?'}
+};
+function render(focus){
+ const t=text[state.phase==='ending'?state.world:state.phase];
+ $('stage').dataset.world=state.world;
+ for(const [id,key] of [['tag','tag'],['step-label','step'],['heading','heading'],['story','story'],['scene-note','note'],['scene-desc','desc']]) $(id).textContent=t[key];
+ $('intro-caption').hidden=state.phase!=='intro';$('start').hidden=state.phase!=='intro';$('choices').hidden=state.phase!=='choice';$('results').hidden=state.phase!=='ending';$('reflection').hidden=state.phase!=='ending';
+ $('reflection-text').textContent=t.question||'';
+ document.querySelectorAll('.dot').forEach((el,i)=>el.classList.toggle('active',i===({intro:0,choice:1,ending:2}[state.phase])));
+ if(focus){$('heading').focus({preventScroll:true});$('announcement').textContent=t.heading+' '+t.story;}
+}
+function tone(){
+ if(!sound||!audio||audio.state!=='running'||state.phase==='intro')return;
+ const dirty=state.world==='dirty', notes=dirty?[220,233.08,311.13,207.65]:[261.63,329.63,392,523.25];
+ const now=audio.currentTime;const osc=audio.createOscillator();const gain=audio.createGain();
+ osc.type=dirty?'triangle':'sine';osc.frequency.value=notes[noteIndex++%notes.length];gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.045,now+.035);gain.gain.exponentialRampToValueAtTime(.001,now+.5);osc.connect(gain);gain.connect(audio.destination);osc.start(now);osc.stop(now+.55);
+ osc.onended=()=>{osc.disconnect();gain.disconnect();};
+}
+async function setSound(on){
+ try{
+  if(on){const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)throw new Error('no audio');if(!audio)audio=new Audio();await audio.resume();}
+  sound=on;
+  $('sound').textContent=on?'Sonido: encendido':'Sonido: apagado';$('sound').setAttribute('aria-pressed',String(on));
+  if(timer)clearInterval(timer);timer=null;if(on){tone();timer=setInterval(tone,600);}
+ }catch(e){sound=false;$('sound').textContent='Sonido no disponible';$('sound').setAttribute('aria-pressed','false');}
+}
+function act(action){state=TuDecides.transition(state,action);noteIndex=0;render(true);if(action==='start')setSound(true);if(action==='reset')setSound(false);}
+$('start').addEventListener('click',()=>act('start'));$('recycle').addEventListener('click',()=>act('recycle'));$('litter').addEventListener('click',()=>act('litter'));$('reset').addEventListener('click',()=>act('reset'));$('sound').addEventListener('click',()=>setSound(!sound));
+document.addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.altKey||e.metaKey)return;if(state.phase==='choice'&&(e.key==='1'||e.key==='2')){e.preventDefault();act(e.key==='1'?'recycle':'litter');}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&audio)audio.suspend().catch(()=>{});else if(sound&&audio)audio.resume().catch(()=>{});});
+render(false);
+})();
+</script>
+</body>
+</html>
