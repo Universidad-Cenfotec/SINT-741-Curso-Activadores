@@ -30,11 +30,45 @@ Como el rincón ya está abierto, lo que falta es **una razón concreta para vol
 
 ## 4. Evidencia y aprendizaje
 
-*En espera. Se completará después de aplicar la actividad.*
+*Esta sección se presenta como plan. Los resultados se completarán después de aplicar la actividad.*
+
+**Qué vamos a observar:**
+
+- **Asistencia:** cuántos niños y niñas llegan a la tarde abierta, y de ellos cuántos ya habían terminado su curso.
+- **Qué hicieron:** si continuaron un proyecto, probaron algo nuevo o le enseñaron algo a otro, y cuántos cumplieron el reto *«Haz algo y muéstraselo a alguien»*.
+- **Regreso:** cuántos de los que vinieron a la tarde abierta vuelven al rincón en las dos semanas siguientes.
+
+**Cómo lo vamos a recoger:**
+
+- Una lista simple de asistencia, hecha por el mentor presente.
+- Dos o tres preguntas cortas a los niños al final: *¿Qué hiciste hoy? ¿Qué fue lo que más te gustó? ¿Volverías?*
+- Una conversación breve con el facilitador y con algunas familias.
+- Fotos o videos solo si las familias lo autorizan.
+
+**Qué esperamos ver si funciona:** que lleguen niños cuyo curso ya terminó, que muestren lo que hicieron y que digan que quieren volver.
+
+| Qué medimos | Resultado |
+|---|---|
+| Niños que asistieron | *(completar)* |
+| De ellos, con curso ya terminado | *(completar)* |
+| Niños que cumplieron el reto | *(completar)* |
+| Niños que volvieron en las 2 semanas siguientes | *(completar)* |
+| Comentarios de niños, familias y facilitador | *(completar)* |
+
+**Qué aprendimos:** *(completar después de aplicar: qué funcionó, qué no, qué cambiaríamos)*
 
 ## 5. Continuidad
 
-*En espera. Se completará después de aplicar la actividad.*
+**Si la tarde abierta funciona:**
+
+- **Repetirla** con una frecuencia fija (por ejemplo, una vez al mes), en coordinación con el facilitador del rincón.
+- **Invitar al terminar cada curso:** cuando un curso acabe, el mentor envía por WhatsApp la invitación a la siguiente tarde abierta, para que los niños sepan que pueden volver.
+- **Dar un papel a quienes regresan:** los niños que ya muestran lo que saben pueden enseñarles a los nuevos, de modo que se sientan parte del lugar.
+- **Mantener la comunicación** con una publicación en Instagram después de cada tarde, mostrando lo que hicieron los niños (con permiso de las familias).
+
+**Quién se encarga:** el integrante del equipo que es mentor, con apoyo del facilitador. Como solo se usan el espacio, los materiales que ya existen y un mentor presente, no requiere recursos extra.
+
+**Si no funciona como esperamos:** usaremos lo aprendido en la sección 4 para ajustar la fecha, la invitación o el tipo de actividad antes de repetirla.
 
 ## 6. Uso de IA y retroalimentación
 
@@ -46,7 +80,7 @@ Como el rincón ya está abierto, lo que falta es **una razón concreta para vol
 | Definimos el problema: los niños dejan de venir cuando termina su curso, aunque el rincón siempre está abierto. | Formato de una tarde abierta como primera acción. |
 | Descartamos la primera idea (una sala de estreno pensada como audio) porque no se parecía a cómo funciona el rincón. | El reto opcional *«Haz algo y muéstraselo a alguien»*. |
 | Descartamos la segunda idea («egresados que vuelven») por su título y porque queríamos algo más sencillo. | La nota sobre el cuidado de los niños (adulto responsable y familias informadas). |
-| Decidimos dejar en espera las secciones 4 y 5 hasta aplicar la actividad. | |
+| Decidimos escribir las secciones 4 y 5 como plan y completar los resultados después de aplicar la actividad. | El plan de evidencia y continuidad de las secciones 4 y 5 (qué observar, cómo recogerlo y cómo repetir la tarde); lo revisamos y ajustamos. |
 | Elegimos cómo invitar: WhatsApp e Instagram. | |
 
 **Qué cambió gracias a revisar con la IA:** al principio la IA asumió que el rincón era un espacio de audio y que los problemas eran otros. Al corregirla, la propuesta pasó de una idea genérica a una ajustada al rincón.
