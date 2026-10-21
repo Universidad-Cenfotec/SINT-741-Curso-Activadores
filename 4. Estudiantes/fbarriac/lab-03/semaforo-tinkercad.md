@@ -127,7 +127,7 @@ La práctica relaciona salidas y tiempos. Se contrastó la guía con fuentes ofi
 
 **Pendiente:** simular este montaje, recoger la interpretación de otro grupo y medir el tiempo con principiantes. El montaje físico y los bloques quedan para futuras ampliaciones.
 
-## Cómo podés contribuir
+## Cómo puedes contribuir
 
 **Ayúdanos a aclarar una instrucción.** Lee o prueba la guía e indica el primer paso que requiere ayuda: número, qué entendiste y cómo lo aclararías. También sirve confirmar que pudiste seguirla.
 
