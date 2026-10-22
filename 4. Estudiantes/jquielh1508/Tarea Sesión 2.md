@@ -1,4 +1,4 @@
-# 🗺️ Mapa de Comunidad: MakeralDia
+# 🗺️ Mapa de Comunidad: MakeralDia 
 
 > **Prototipo Web / Figma:** [Ver Prototipo en Figma](https://www.figma.com/make/oB6NH1TdBdtcvShx3EsZUQ/MakeralDia-Prototipo-Web?t=EELi5HcKAd8gh3YO-1)
 
