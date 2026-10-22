@@ -1,4 +1,4 @@
-# Propuesta de Activación: Comunidad de Facilitadores de Infoplazas AIP (Regional de Panamá)
+# Propuesta de Activación: Comunidad de Facilitadores de Infoplazas AIP (Regional de Panamá) 
 # Autor: Juan Quiel
 ## Comunidad elegida
 * **Quiénes son:** La comunidad está compuesta por los dinamizadores que operan en los centros Infoplazas AIP pertenecientes a la **Regional de Panamá**.
