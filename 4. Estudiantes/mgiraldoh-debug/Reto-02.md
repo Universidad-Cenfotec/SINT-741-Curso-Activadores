@@ -31,7 +31,7 @@ Robótica educativa de bajo costo, diseño de mecanismos en cartón y automatiza
 
 ## Comunidad
 
-* *Participantes actuales:* Grupo 2 (Jose Aaron Aponte, Katherine Gálvez, Lizmarie Camacho, Hazael Moreno).
+* *Participantes actuales:* Grupo 2 (Jose Aaron Aponte, Katherine Gálvez, Lizmarie Camacho, Hazael Moreno,Milena Giraldo, Madai Samudio).
 * *Posibles participantes:* Estudiantes de secundaria, educadores comunitarios y jóvenes interesados en tecnología.
 * *Capacidades a aportar:* Electrónica, programación (Arduino, ESP32, Python), control, robótica y mentoría científica.
 
