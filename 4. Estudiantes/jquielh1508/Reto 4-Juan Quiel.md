@@ -1,4 +1,4 @@
-# Reto · Registro del Show & Tell
+# Reto · Registro del Show & Tell 
 
 
 > **Nota:** Documentación correspondiente a la sesión de revisión comunitaria de proyectos y facilitación.
