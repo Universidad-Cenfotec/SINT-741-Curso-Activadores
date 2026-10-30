@@ -5,7 +5,7 @@
 > **Fecha:** 22 de octubre de 2026  
 > **Hora de inicio:** 16:50 (CST, según la minuta)  
 > **Modalidad:** Virtual  
-> **Fuente:** Minuta del encuentro del 22 de octubre de 2026.
+> **Fuente:** Minuta del encuentro del 22 de octubre de 2026. 
 
 ## 1. El encuentro
 
