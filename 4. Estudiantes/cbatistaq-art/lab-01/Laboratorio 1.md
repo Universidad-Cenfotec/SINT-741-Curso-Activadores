@@ -3,7 +3,7 @@
 **Propuesta inicial para el reto: Imaginar el cambio en una comunidad**
 
 **Participante:** Carlos Antonio Batista Quiel  
-**País:** Panamá
+**País:** Panamá 
 
 ## 1. Comunidad elegida
 
