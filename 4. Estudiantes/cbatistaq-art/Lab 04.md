@@ -1,5 +1,5 @@
 
-# Reto 3 · Registro del Show & Tell
+# Reto 4 · Registro del Show & Tell
 
 > **Encuentro comunitario de presentación e intercambio de proyectos tecnológicos**  
 > **Fecha:** 22 de octubre de 2026  
