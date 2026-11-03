@@ -155,7 +155,6 @@ Captura del panel de RetoSquad y del formulario para crear un nuevo reto mediant
 
 [Ver la grabación de la sesión en Google Drive](https://drive.google.com/file/d/1BNPZp9_-4II00XNJH-m5iP0puG2MJiju/view?usp=sharing).
 
-### 6.5. Evidencia complementaria pendiente
+### 6.5. Evidencia complementaria 
 
-- Enlaces directos a los demás proyectos, si sus autores desean compartirlos.
-- Otras capturas, fotografías o videos autorizados que se incorporen posteriormente.
+- capturas de pantalla de la reunión incorporadas en la carpeta de "evidencias"
