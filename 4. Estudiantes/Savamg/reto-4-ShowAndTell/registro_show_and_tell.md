@@ -120,8 +120,8 @@ Describan al menos dos ejemplos concretos.
 
 - **Grabación de la sesión:** [Ver la grabación en Google Drive](https://drive.google.com/file/d/1BNPZp9_-4II00XNJH-m5iP0puG2MJiju/view?usp=sharing).
 - **Fecha de la sesión:** 22 de octubre de 2026, a las 16:50 (GMT−6).
-- **Enlaces a proyectos:** pendientes de agregar.
-- **Capturas, fotografías o videos autorizados:** pendientes de agregar.
+- **Enlaces a proyectos:** solicitados a los participantes quedan pendientes de agregar.
+- **Capturas, fotografías o videos autorizados:** agregados en la carpeta de evidencias
 
 ## 6. Evidencia
 
