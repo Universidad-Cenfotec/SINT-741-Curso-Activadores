@@ -43,7 +43,6 @@ Mario-Barsallo/
 │   ├── mapa-comunidad.md
 │   └── prototipo/
 ├── lab-04/
-│   ├── lab-04-reto-clase-4.md
-│   └── rig-ojos-blender.jpg
+│   └── lab-04-reto-clase-4.md
 └── proyecto-final/
 ```
