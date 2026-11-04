@@ -92,8 +92,5 @@
 
 ## Evidencia
 
-- Captura del rig de los ojos en Blender, tomada del video que compartí el 24 de octubre:
-
-  ![Rig de los ojos del personaje en Blender](rig-ojos-blender.jpg)
-
+- Video de mi presentación, compartido el 24 de octubre de 2026 en el grupo de WhatsApp del curso.
 - Grabación, transcripción y notas automáticas de la sesión del 22 de octubre, compartidas por la docente en el grupo de WhatsApp del curso.
