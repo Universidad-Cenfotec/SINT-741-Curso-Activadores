@@ -23,12 +23,14 @@ Esta carpeta reúne mis trabajos y entregas del curso.
 |---|---------|------|------------|--------|
 | 1 | Laboratorio 1 | [Reto de clase 1](lab-01/lab-01-reto-clase-1.md) | [Conclusión de la semana 1](lab-01/conclusion-semana-01.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
 | 2 | Laboratorio 2 | [Reto de clase 2](lab-02/lab-02-reto-clase-2.md) | [Mapa de Comunidad](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/mapa-comunidad.md) · [Prototipo](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/prototipo) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 3 | Proyecto final | | `proyecto-final/` | ![Pendiente](https://img.shields.io/badge/-Pendiente-8B949E?style=flat-square) |
+| 3 | Laboratorio 4 | [Reto de clase 4](lab-04/lab-04-reto-clase-4.md) | Registro del Show & Tell | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 4 | Proyecto final | | `proyecto-final/` | ![Pendiente](https://img.shields.io/badge/-Pendiente-8B949E?style=flat-square) |
 
 ## 🚀 Proyectos
 
 - **Laboratorio 1.** Una comunidad de jóvenes que aprenden animación y diseño 3D con Blender, en el Rincón Clubhouse de La Chorrera (Panamá).
 - **Laboratorio 2.** *Tú Decides*, un juego corto para el navegador donde una decisión pequeña sobre el entorno cambia el final de la historia. Hecho con el Grupo 1, Arte y cultura.
+- **Laboratorio 4.** Registro del Show & Tell del 22 de octubre de 2026, donde presenté mi personaje 3D en Blender con animación facial de los ojos.
 
 ## 🗂️ Estructura
 
@@ -40,5 +42,8 @@ Mario-Barsallo/
 │   ├── lab-02-reto-clase-2.md
 │   ├── mapa-comunidad.md
 │   └── prototipo/
+├── lab-04/
+│   ├── lab-04-reto-clase-4.md
+│   └── rig-ojos-blender.jpg
 └── proyecto-final/
 ```
