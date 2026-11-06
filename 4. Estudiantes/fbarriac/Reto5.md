@@ -24,7 +24,6 @@
 | Bianca | Vianvavc | **Facilitación de pruebas y retroalimentación:** organiza la actividad de bienvenida, observa la prueba con una persona que no haya redactado la guía y registra mejoras. |
 | Esteban Bejerano | Esteban2026-source | **Documentación y continuidad:** organiza los registros de prueba, mantiene la lista de pendientes y prepara la información para que otra persona pueda continuar. |
 
-Esta es una distribución inicial de responsabilidades para los nueve integrantes. El equipo podrá ajustarla al discutir la propuesta y sustituir «Miembro 1» a «Miembro 9» por los nombres reales, junto con sus usuarios de GitHub. Los pasos siguientes utilizan esta misma distribución.
 
 ## Repositorio analizado
 
