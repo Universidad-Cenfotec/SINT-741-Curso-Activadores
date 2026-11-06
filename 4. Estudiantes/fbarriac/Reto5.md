@@ -6,9 +6,9 @@
 
 ## Grupo
 
-**Número del grupo:** [POR COMPLETAR].
+**Número del grupo:** 5.
 
-**Nombre del grupo:** [POR COMPLETAR].
+**Nombre del grupo:** Activación Comunitaria.
 
 **Comunidad de práctica:** Activación Comunitaria.
 
