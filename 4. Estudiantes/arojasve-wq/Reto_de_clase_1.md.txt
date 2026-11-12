@@ -1,0 +1,53 @@
+# Reto de clase: Imaginar el cambio en una comunidad
+
+## Comunidad elegida
+
+La comunidad que elegimos está formada por jóvenes que participan en las actividades del Clubhouse en el valle de Antón. Es una comunidad en la que sus integrantes pueden aprender, compartir conocimientos, participar en actividades y desarrollar proyectos juntos.
+Una persona nueva puede comenzar a participar integrándose a las actividades, conociendo a los demás participantes y sumándose a las iniciativas que se realizan dentro de la comunidad.
+
+## Cambio que buscamos
+
+Actualmente, puede existir interés por cuidar el ambiente, pero no siempre las personas separan los residuos o participan en actividades de reciclaje de manera constante.
+Me gustaría lograr que más jóvenes conozcan la importancia de separar correctamente los residuos y participen activamente en una pequeña iniciativa de reciclaje dentro de la comunidad.
+El cambio podrá observarse mediante la cantidad de personas que participen, los materiales reciclables que se recolecten y las opiniones de los participantes sobre la actividad.
+
+## Primera activación
+
+### Reto de Reciclaje de 7 días
+
+Durante una semana, invitaremos a los jóvenes de la comunidad a participar en la recolección y separación de materiales reciclables.
+
+Para realizar la actividad necesitaremos:
+
+- Recipientes o cajas.
+- Bolsas.
+- Etiquetas para identificar los recipientes.
+- Material informativo.
+- Un espacio para colocar el punto de reciclaje.
+
+El primer paso será preparar el espacio, colocar los recipientes y explicar el reto a los participantes.
+
+## Evidencia y aprendizaje
+
+Durante la prueba observaremos:
+
+- Cuántas personas participan.
+- Qué materiales se recolectan.
+- Cuánto material se logra reunir.
+- Qué dificultades aparecen.
+- Qué opinan los participantes sobre la actividad.
+
+También tomaremos fotografías del proceso y registraremos los resultados.
+Al finalizar los siete días, conversaremos con los participantes para conocer qué les gustó, qué dificultades encontraron y qué cambiarían. Esto nos permitirá identificar qué funcionó y qué podemos mejorar.
+
+## Continuidad
+
+Si la actividad resulta útil, podremos repetir el reto periódicamente y convertirlo en una actividad de la comunidad.
+También podemos crear una pequeña guía con los pasos, materiales y recomendaciones obtenidas durante la primera experiencia, para que otra persona pueda repetir o adaptar la actividad.
+De esta manera, la iniciativa no dependería solamente de quienes la organizaron inicialmente, sino que otros integrantes podrían tomar la iniciativa y liderar una nueva edición.
+
+## Uso de IA y retroalimentación
+
+La problemática del reciclaje y la idea de realizar una actividad dentro de nuestra comunidad surgieron a partir de la observación que realicé sobre el contexto. Utilicé la inteligencia artificial para explorar diferentes ideas de actividades relacionadas con el reciclaje y la participación comunitaria.
+Entre las sugerencias considere diferentes opciones y elegí realizar un reto de reciclaje de siete días porque es una actividad sencilla, requiere pocos recursos y permite observar resultados.
+Después de realizar la actividad, tomaré en cuenta las opiniones de los participantes para decidir qué aspectos debo cambiar o mejorar, como la duración del reto, los materiales que se recolectarán o la forma de registrar la participación.
