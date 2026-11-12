@@ -3,6 +3,8 @@
 **De la circulación de información a la activación comunitaria**  
 **Curso:** Activadores de Comunidades de Práctica — SINT-741
 
+**Profesor: Tomás de Camino Beck**
+
 ## Introducción
 
 Una comunidad de práctica no se desarrolla solamente porque sus integrantes se reúnan, compartan conocimientos o construyan proyectos. También necesita que esas experiencias circulen, sean reconocidas, utilizadas y reinterpretadas por otras personas.
