@@ -2,7 +2,7 @@
 
 * **Curso:** Taller de Activadores Maker / Espacios de Aprendizaje
 * **Sesión:** Clase 4 – Rituales de Facilitación: El *Show and Tell*
-* **Autor(a):** Said Enrique Mendoza / smendozaa
+* **Autor(a):** Said Enrique Mendoza / smendozaa-afk
 * **Fecha:** 10/11/2026
 
 ---
