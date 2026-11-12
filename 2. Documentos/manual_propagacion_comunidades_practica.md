@@ -266,7 +266,7 @@ Cada participante o equipo publicará en GitHub:
 
 ---
 
-# Cierre. Propagar capacidades, no solamente mensajes
+# Propagar capacidades, no solamente mensajes
 
 Una comunidad de práctica no crece únicamente porque muchas personas conozcan su existencia. Crece cuando las personas reconocen el valor de lo que otras hacen, comparten ese trabajo, se ayudan, lo transforman y comienzan iniciativas propias.
 
