@@ -3,15 +3,14 @@
 ## Grupo
 
 **Grupo 4 — Círculo Maker**
-
-Completar los usuarios de GitHub y confirmar los roles antes de entregar.
-
 |Integrante|Usuario de GitHub|Rol en el reto|
 |-|-|-|
-|Josue Parfait, Cesar Villamil|Josanto21, Villamil0128|Navegación e investigación del repositorio|
+|Josue Parfait|Josanto21|Navegación e investigación del repositorio|
+|Cesar Villamil|Villamil0128|Navegación e investigación del repositorio|
 |Alice Rojas|arojasve-wq|Investigación con IA y verificación de evidencia|
-|Said Mendoza, Saret Medina|smendozaa-afk, ct24saretmedina|Pregunta de principiante y revisión de la propuesta|
-|Samantha Matos|Savamg|Redacción en Markdown y publicación|
+|Said Mendoza|smendozaa-afk|Pregunta de principiante y revisión de la propuesta|
+|Saret Medina|ct24saretmedina|Pregunta de principiante y revisión de la propuesta|
+|Samantha Matos|Savamg|Investigación con IA, redacción en Markdown y publicación|
 
 ## Repositorio analizado
 
