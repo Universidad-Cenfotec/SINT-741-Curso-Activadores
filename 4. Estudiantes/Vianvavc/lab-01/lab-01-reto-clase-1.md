@@ -39,4 +39,3 @@ Su utilización estará acompañada de la orientación de los mentores, verifica
 Al finalizar cada taller, recogeremos las opiniones de los participantes mediante preguntas sencillas, conversaciones grupales y espacios de reflexión.
 Nos interesa conocer qué aprendieron, qué actividad les gustó más, qué dificultades encontraron y qué otros temas tecnológicos les gustaría explorar.
 Esta retroalimentación permitirá mejorar las próximas experiencias y asegurar que las actividades respondan a los intereses y necesidades de cada comunidad.
-Recomendación: Estos apartados completan el entregable sin presentar como realizadas actividades que todavía son propuestas. La evidencia se plantea como un mecanismo de documentación y evaluación para las próximas jornadas.
