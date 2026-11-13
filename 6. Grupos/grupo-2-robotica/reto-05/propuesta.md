@@ -12,7 +12,6 @@
 | Fidel Antonio Pena Espinosa | fpena1703-bit | Navegación |
 | Madai Arelis Samudio Candanedo | dachizu07-ux | Pregunta de principiante |
 | Hazael Eliezer Moreno Vanegas | haza507 | Navegación |
-| Melvin Eugene Buford Bernal | mbuford29 | Navegación |
 | Katherine Gálvez López| katherinegalvez047-stack | Navegación |
 
 
