@@ -1,6 +1,6 @@
 # Reto 3 · Grupo 3 · ModuBot
 
-**Equipo:** Alexandra Domínguez · Carlos Batista · Pablo Hernández Meléndez · Juan Quiel
+**Equipo:** Alexandra Domínguez · Carlos Batista · Pablo Hernández Meléndez · Juan Quiel · Kevin Fernández
 
 El Reto 3 de este grupo es un proyecto completo (53 archivos: modelos 3D, STL/STEP, KiCad, Fusion 360 e imágenes). Por su tamaño se mantiene en la carpeta donde se integró (PR #34) y se enlaza desde aquí.
 
