@@ -20,6 +20,7 @@
 | Reto | Entrega |
 |---|---|
 | Reto 2 · Mapa de comunidad | [Tú Decides](reto-02/mapa-comunidad.md) |
+| Reto 3 · Recurso | [Guía para organizar un primer encuentro y distribuir responsabilidades](reto-03/guia-primer-encuentro-y-responsabilidades.md) |
 
 ## Cómo subir una entrega de grupo
 
