@@ -1,0 +1,21 @@
+**Reto 1. imaginar el cambio en una comunidad.**
+
+**Descripción.**
+
+Cada país tienes su propia historia, así como cada pueblo tiene su propio culturas, esta debe evolucionar, pero no dejar de lado el valor ético de un pueblo de una región. Actualmente, sobre el hombro de los adolescentes descansa el futuro de mañana. En mi región se muestra un área de interés especial de estudio sobre las emociones de los adolescentes, sus pasatiempos y su futuro.  Comprender cuál es su verdadera identidad antes un mundo que esta en constate cambio.
+
+Actualmente estos grupos de edad esta cada vez mas apegada a la nueva tecnología que diariamente podemos decir que sus tiempos de atención a la pantalla superas los 4 a 5 horas mínima día
+
+**Tema. La cultura tradicional del adolescente y la nueva cultura tecnológica.**
+
+**Comunidad elegida.** Los grupos de adolescentes entre los 12 a 15 años de edad, que constantemente vemos que su comportamiento se está orientado hacia un destino diferentes guiados por una pantalla que al parecer que su mente esta siendo gobernado para manipular y llevar a una cultura de consumismo, mas no para crear un recurso que pueda beneficiar a todos.
+
+**Cambio que buscamos.** Un nuevo despertar de la conciencia hacia la sistematización de esfuerzo y participación en desarrollo colectivo, mirar hacia el futuro y crear espacio para dar bienvenidas a la globalización teniendo en cuenta que las bases de todos los avances es una diciplina que acompaña a cada proceso, un cambio de actitud frente a la nueva realidad, una postura de responsabilidad social, comprendiendo que cada elemento humano es una potente herramienta para dar una nueva imagen al futuro de mañana.
+
+**Primera activación**: se visitará a un grupo de estudiantes de sextos grados de la escuela Bahais de Soloy y algunos adolescentes mas de la comunidad, a las cuales se le planteará el futuro, como puede utilizar la tecnología para crear un nuevo conocimiento a través de idea que mas adelantes los pueda llevar a la realidad con la ayuda de la nueva tecnología y que en el futuro mas persona pueda beneficiarse se este esfuerzo.
+
+**Evidencia y aprendizaje:** Los participantes pensasen en que aporte puede dar a la sociedad y que herramienta puede utilizar para su apoyo, como también en que áreas de estudio se orienta esta iniciativa. Otros de los elementos que se consideraras es de qué manera fortalece la cultura ancestral frente a la nueva cultura de la tecnología.
+
+**Continuidad:** a través de esta iniciativa se espera que esto grupos de estudiantes sea un grupo que despierte el interés en otros grupos igual que ellos y a través de compartir sus aprendizajes más jóvenes y adolescentes se intereses por trabajar con ellos y unirse en sus a fuerzo mostrando interés por generar un nuevo conocimiento y poner a la disposición de todos.
+
+Es una idea en desarrollo.
