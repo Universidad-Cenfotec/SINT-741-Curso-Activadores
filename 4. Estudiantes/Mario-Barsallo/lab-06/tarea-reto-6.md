@@ -11,12 +11,18 @@ Repositorio educativo para jóvenes que empiezan en el diseño 3D y para mentore
 
 ## Lista del entregable
 
-| Pide el reto | Estado |
-| --- | --- |
-| `README.md` con la descripción del proyecto | ✅ Publicado |
-| `CONTRIBUTING.md` con instrucciones para colaborar | ⏳ Pendiente |
-| Al menos un Issue con una propuesta de mejora | ⏳ Pendiente |
-| Al menos un Pull Request creado e integrado | ⏳ Pendiente |
-| Declaración del uso de inteligencia artificial | ⏳ Pendiente |
+| Pide el reto | Estado | Evidencia |
+| --- | --- | --- |
+| `README.md` con la descripción del proyecto | ✅ | [README.md](https://github.com/MarioLowPoly/Blender-desde-0/blob/main/README.md) |
+| `CONTRIBUTING.md` con instrucciones para colaborar | ✅ | [CONTRIBUTING.md](https://github.com/MarioLowPoly/Blender-desde-0/blob/main/CONTRIBUTING.md) |
+| Al menos un Issue con una propuesta de mejora | ✅ | [Issue #1 · Subir los dibujos del cubo, modelos y renders existentes](https://github.com/MarioLowPoly/Blender-desde-0/issues/1) |
+| Al menos un Pull Request creado e integrado | ✅ | [Pull Request #2 · Completar el README del proyecto](https://github.com/MarioLowPoly/Blender-desde-0/pull/2) |
+| Declaración del uso de inteligencia artificial | ✅ | Sección «Uso de inteligencia artificial» del README |
+
+## Presentación (3 minutos)
+
+1. **¿Qué proyecto seleccioné y por qué?** *Blender desde 0*, porque fui mentor de diseño 3D en el Rincón Clubhouse de La Chorrera y quiero que la práctica continúe cuando termina el taller.
+2. **¿Qué mejora propuse en el Issue?** Subir los dibujos del cubo, los modelos y los renders que ya tengo, para que quien llegue vea qué va a lograr en cada etapa.
+3. **¿Cómo podría crecer con contribuciones?** Otros jóvenes pueden subir su proceso, y otros mentores pueden agregar actividades (por ejemplo, la de masilla) o adaptarlas a su grupo, siguiendo el `CONTRIBUTING.md`.
 
 La guía del reto está en [`guia-reto-6.md`](guia-reto-6.md).
