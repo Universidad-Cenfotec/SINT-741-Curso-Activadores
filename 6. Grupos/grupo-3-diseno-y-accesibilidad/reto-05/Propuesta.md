@@ -6,11 +6,11 @@ Grupo 3 · Diseño y Accesibilidad
 
 | Integrante | Usuario de GitHub | Rol en el reto |
 | --- | --- | --- |
-| Alexandra Dominguez | [@usuario] | Investigación con IA y diseño de la propuesta de mejora |
-| Aylin Escobar | [@usuario] | Presentación (pitch) |
-| Carlos Batista | [@usuario] | Presentación (pitch) |
-| Juan Antonio Quiel Hernández | [@usuario] | Redacción y publicación; presentación (pitch) |
-| Kevin Fernández | [@usuario] | Navegación: identificar la idea principal del repositorio |
+| Alexandra Dominguez | [@adominguezr] | Investigación con IA y diseño de la propuesta de mejora |
+| Aylin Escobar | [@aescobarg19] | Presentación (pitch) |
+| Carlos Batista | [@cbatistaq-art] | Presentación (pitch) |
+| Juan Antonio Quiel Hernández | [@jquielh1508] | Redacción y publicación; presentación (pitch) |
+| Kevin Fernández | [@Skevin507] | Navegación: identificar la idea principal del repositorio |
 | Pablo Daniel Hernández Meléndezz | [@usuario] | Investigación con IA y diseño de la propuesta de mejora |
 
 ## Repositorio analizado
