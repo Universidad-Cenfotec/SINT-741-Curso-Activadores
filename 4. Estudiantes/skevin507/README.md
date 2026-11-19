@@ -27,3 +27,9 @@ skevin507/
 +-- lab-02/
 +-- proyecto-final/
 ```
+
+## Reto 6 · De mi proyecto a nuestra comunidad
+
+**Repositorio:** https://github.com/skevin507/recicladora-pet-rincon
+
+Recicladora de botellas PET a filamento 3D que construí en el Rincón Clubhouse Explora con piezas de una Ender-3 (diseño Recreator 3D MK5Kit). Incluye README, CONTRIBUTING, un Issue abierto y un Pull Request integrado.
