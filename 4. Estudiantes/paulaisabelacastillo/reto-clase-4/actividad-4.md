@@ -148,10 +148,6 @@ Me gustaría aplicar una dinámica similar en futuras actividades de Teen4STEAM.
 
 ## 6. Evidencia
 
-**Grabación del encuentro:**
-
-[Ver grabación del Show & Tell del 22 de octubre de 2026](https://drive.google.com/file/d/1BNPZp9_-4II00XNJH-m5iP0puG2MJiju/view?usp=sharing)
-
 **Fecha:** 22 de octubre de 2026.
 
 **Persona anfitriona:** Tomás De Camino Beck.
