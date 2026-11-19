@@ -33,19 +33,36 @@ Esta carpeta reúne mis trabajos y entregas del curso.
 
 - **Laboratorio 1.** Una comunidad de jóvenes que aprenden animación y diseño 3D con Blender, en el Rincón Clubhouse de La Chorrera (Panamá).
 - **Laboratorio 2.** *Tú Decides*, un juego corto para el navegador donde una decisión pequeña sobre el entorno cambia el final de la historia. Hecho con el Grupo 1, Arte y cultura.
+- **Laboratorio 3.** Una guía para organizar un primer encuentro de 60 minutos, repartir responsabilidades y dejar registro de lo acordado. Hecha con el Grupo 1, Arte y cultura.
 - **Laboratorio 4.** Registro del Show & Tell del 22 de octubre de 2026, donde presenté mi personaje 3D en Blender con animación facial de los ojos.
+- **Laboratorio 5.** Una propuesta para mejorar la documentación del Sumobot de CENFOTEC: una guía de primeros pasos en 6 etapas, un FAQ ampliado para principiantes y una plantilla para compartir experiencias. Hecha con el Grupo 1, Arte y cultura.
+- **Laboratorio 6.** *Blender desde 0*, mi repositorio personal con actividades para que jóvenes empiecen en el diseño 3D: primero un cubo con luz y sombra en papel, después las bases de Blender. Incluye `CONTRIBUTING.md`, un Issue y un Pull Request integrado.
 
 ## 🗂️ Estructura
+
+Cada laboratorio tiene la **guía del reto** (`guia-reto-N.md`) y la **tarea hecha**.
 
 ```
 Mario-Barsallo/
 ├── README.md
 ├── lab-01/
+│   ├── guia-reto-1.md
+│   ├── tarea-reto-1.md
+│   └── conclusion-semana-01.md
 ├── lab-02/
-│   ├── lab-02-reto-clase-2.md
-│   ├── mapa-comunidad.md
-│   └── prototipo/
+│   ├── guia-reto-2.md
+│   └── mapa-comunidad.md
+├── lab-03/
+│   ├── guia-reto-3.md
+│   └── guia-primer-encuentro-y-responsabilidades.md
 ├── lab-04/
-│   └── lab-04-reto-clase-4.md
+│   ├── guia-reto-4.md
+│   └── tarea-reto-4.md
+├── lab-05/
+│   ├── guia-reto-5.md
+│   └── propuesta.md
+├── lab-06/
+│   ├── guia-reto-6.md
+│   └── tarea-reto-6.md
 └── proyecto-final/
 ```
