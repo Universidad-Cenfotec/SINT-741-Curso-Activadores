@@ -1,6 +1,6 @@
 # Propuesta: Guía de primeros pasos y FAQ para principiantes del Sumobot
 
-![Sumobot 2025](images/banner-sumobot-2025.jpg)
+![Sumobot 2025](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/images/banner-sumobot-2025.jpg)
 
 SINT-741 · Activadores de Comunidades de Práctica · Reto de clase 5 · Grupo 1, Arte y Cultura
 Reto del 29 de octubre de 2026 · Entrega revisada por el grupo en noviembre de 2026
@@ -26,10 +26,10 @@ Reto del 29 de octubre de 2026 · Entrega revisada por el grupo en noviembre de 
 | Archivo | Qué es |
 | --- | --- |
 | [`propuesta.md`](propuesta.md) | Esta propuesta |
-| [`primeros_pasos.md`](primeros_pasos.md) | **Mejora A:** guía de primeros pasos en 6 etapas, ya construida |
-| [`FAQ.md`](FAQ.md) | **Mejora B:** el FAQ del Sumobot con 5 preguntas nuevas ya respondidas |
-| [`plantilla-pregunta-o-experiencia.md`](plantilla-pregunta-o-experiencia.md) | **Mejora C:** plantilla de Issue para que otros compartan dudas y experiencias |
-| [`images/`](images/) | Imágenes tomadas del repositorio Sumobot, con crédito |
+| [`primeros_pasos.md`](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/primeros_pasos.md) | **Mejora A:** guía de primeros pasos en 6 etapas, ya construida |
+| [`FAQ.md`](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/FAQ.md) | **Mejora B:** el FAQ del Sumobot con 5 preguntas nuevas ya respondidas |
+| [`plantilla-pregunta-o-experiencia.md`](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/plantilla-pregunta-o-experiencia.md) | **Mejora C:** plantilla de Issue para que otros compartan dudas y experiencias |
+| [`images/`](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/images/) | Imágenes tomadas del repositorio Sumobot, con crédito |
 
 ```
 reto-05/
@@ -90,7 +90,7 @@ En clase vimos las señales de una memoria colectiva: propósito visible, contex
 
 **Mejorar la documentación del repositorio y llevar su modelo a nuestra comunidad**, sin modificar el robot ni su código. Las mejoras A, B y C ya están construidas en esta entrega como primera versión.
 
-**A. [Guía de primeros pasos](primeros_pasos.md).** Seis etapas en orden. Cada una dice qué hacer, cómo saber que salió bien y qué documento existente leer, para no repetir información:
+**A. [Guía de primeros pasos](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/primeros_pasos.md).** Seis etapas en orden. Cada una dice qué hacer, cómo saber que salió bien y qué documento existente leer, para no repetir información:
 
 | # | Etapa | Documento existente al que enlaza |
 | --- | --- | --- |
@@ -101,7 +101,7 @@ En clase vimos las señales de una memoria colectiva: propósito visible, contex
 | 5 | Tu primer programa | `códigos_de_ejemplo/codigo inicio`, `test_motores.py`, `code_scan.py`, `sensores_infrarrojos.md` |
 | 6 | Prueba en el dojo | monitor web de sensores, `Prueba_Dojo.py`, `dojo.md`, `reglas de competencia.md` |
 
-**B. [FAQ ampliado](FAQ.md).** Conserva las 4 preguntas originales sin cambios y agrega 5 nuevas, cada una con su fuente:
+**B. [FAQ ampliado](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/FAQ.md).** Conserva las 4 preguntas originales sin cambios y agrega 5 nuevas, cada una con su fuente:
 
 5. ¿Qué conocimientos previos de programación o electrónica se necesitan?
 6. ¿Cuál es una buena estrategia para empezar a programar el robot?
@@ -109,7 +109,7 @@ En clase vimos las señales de una memoria colectiva: propósito visible, contex
 8. ¿Qué herramientas básicas necesito para armarlo y configurarlo?
 9. ¿Cuáles son los errores más comunes de los principiantes?
 
-**C. [Canal de preguntas y experiencias](plantilla-pregunta-o-experiencia.md).** Una plantilla de Issue para que quien pruebe el Sumobot cuente su experiencia o deje una duda nueva. El FAQ y la guía la enlazan al final. Así el FAQ crece con lo que viven otros equipos.
+**C. [Canal de preguntas y experiencias](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/plantilla-pregunta-o-experiencia.md).** Una plantilla de Issue para que quien pruebe el Sumobot cuente su experiencia o deje una duda nueva. El FAQ y la guía la enlazan al final. Así el FAQ crece con lo que viven otros equipos.
 
 **D. Qué adaptamos para nuestra comunidad.** Lo que más nos sirve del Sumobot es su forma de documentar: un índice en el README, un archivo por tema y un FAQ. Vamos a usar ese mismo modelo (guía en etapas, FAQ y canal de experiencias) en los recursos del Grupo 1, empezando por [*Tú Decides*](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/mapa-comunidad.md) (Reto 2), para que otra persona pueda continuarlos sin nosotros.
 
@@ -140,7 +140,7 @@ En clase vimos las señales de una memoria colectiva: propósito visible, contex
 
 ## Cómo podría continuar otra persona
 
-- Empezar por [`primeros_pasos.md`](primeros_pasos.md). Ya dice qué archivo del repositorio cubre cada etapa.
+- Empezar por [`primeros_pasos.md`](../../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/primeros_pasos.md). Ya dice qué archivo del repositorio cubre cada etapa.
 - Tomar alguno de estos pendientes, que dejamos abiertos a propósito para que otros contribuyan:
   - Hacer la prueba con un principiante (fila 4 de la tabla anterior) y mejorar la guía con lo que se observe.
   - Corregir en el repositorio Sumobot los enlaces rotos (`componentes2025.md`, `SumoBot_Device_Files.zip`) y los nombres de archivo de `archivos_de_fabricacion/README.md`.
