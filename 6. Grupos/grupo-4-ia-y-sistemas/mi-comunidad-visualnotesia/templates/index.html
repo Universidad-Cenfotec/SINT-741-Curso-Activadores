@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisualNotes AI - Plataforma de Estudio Universitario con IA</title>
+  <link rel="stylesheet" href="/static/css/style.css?v=__STATIC_VERSION__">
+  
+  <!-- Mermaid.js para diagramas y mapas conceptuales -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <!-- Marked.js para previsualización enriquecida de Markdown (.md) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+  <!-- ========================================================
+       BARRA DE NAVEGACIÓN PRINCIPAL (SUPERIOR)
+  ======================================================== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand" id="brand-logo-btn">
+        <div class="brand-badge-icon">
+          <svg class="svg-icon" style="width:22px; height:22px;" viewBox="0 0 24 24">
+            <circle cx="18" cy="5" r="3"/>
+            <circle cx="6" cy="12" r="3"/>
+            <circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+        </div>
+        <div>
+          <span class="brand-title">VisualNotes AI</span>
+          <span class="brand-sub">Asistente Visual Universitario</span>
+        </div>
+      </div>
+
+      <!-- Indicador del Apunte Activo -->
+      <div class="current-note-indicator" id="current-note-indicator" style="display: none;">
+        <span class="indicator-label">Apunte activo:</span>
+        <span class="indicator-title" id="top-active-note-title">Título del apunte</span>
+        <span class="indicator-tag" id="top-active-note-subject">Materia</span>
+      </div>
+
+      <!-- Acciones de Cuenta y Configuración -->
+      <div class="header-controls">
+        <!-- Volver a la landing -->
+        <a class="btn btn-secondary btn-icon-round" href="/" title="Volver al inicio" aria-label="Volver al inicio">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M3 9.5 12 3l9 6.5"/>
+            <path d="M5 9.5V21h14V9.5"/>
+            <path d="M9.5 21v-6h5v6"/>
+          </svg>
+        </a>
+        <!-- Silenciar / Activar Sonidos -->
+        <button class="btn btn-secondary btn-icon-round" id="btn-toggle-sound" title="Alternar sonido de interfaz">
+          <span id="sound-icon-container">
+            <svg class="svg-icon" viewBox="0 0 24 24">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Indicador de almacenamiento local -->
+        <div class="pill-badge pill-primary" title="Tus apuntes se guardan localmente en este dispositivo" style="padding: 0.45rem 0.9rem;">
+          <svg class="svg-icon" style="width: 15px; height: 15px;" viewBox="0 0 24 24">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M21 5v6c0 1.66-4.03 3-9 3s-9-1.34-9-3V5"/>
+            <path d="M21 11v6c0 1.66-4.03 3-9 3s-9-1.34-9-3v-6"/>
+          </svg>
+          <span>Guardado local</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         SUBMENÚ PRINCIPAL: CADA FUNCIÓN EN SU PROPIA VISTA LIMPIA
+    ======================================================== -->
+    <nav class="subnav-bar">
+      <div class="subnav-scroller">
+        <button class="subnav-item active" data-view="create">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+          <span class="subnav-label">Crear Apunte</span>
+        </button>
+
+        <button class="subnav-item" data-view="concept-map">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <circle cx="18" cy="5" r="3"/>
+            <circle cx="6" cy="12" r="3"/>
+            <circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+          <span class="subnav-label">Mapa Conceptual</span>
+        </button>
+
+        <button class="subnav-item" data-view="visual-guides">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+          <span class="subnav-label">Guías Visuales</span>
+        </button>
+
+        <button class="subnav-item" data-view="markdown-doc">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <span class="subnav-label">Documento Markdown</span>
+        </button>
+
+        <button class="subnav-item" data-view="summary-quiz">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/>
+            <line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          <span class="subnav-label">Resumen y Quiz</span>
+        </button>
+
+        <button class="subnav-item" data-view="transcription">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="22"/>
+          </svg>
+          <span class="subnav-label">Transcripción</span>
+        </button>
+
+        <button class="subnav-item" data-view="web-resources">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          <span class="subnav-label">Videos y Enlaces</span>
+        </button>
+
+        <button class="subnav-item" data-view="library">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span class="subnav-label">Mis Apuntes</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================
+       CONTENIDO PRINCIPAL (ESPACIO DEDICADO POR SECCIÓN)
+  ======================================================== -->
+  <main class="page-container">
+
+    <!-- OVERLAY GLOBAL DE CARGA -->
+    <div class="loading-overlay" id="loading-overlay">
+      <div class="spinner-circle"></div>
+      <div style="text-align: center;">
+        <div id="loading-status-text" class="loading-heading">
+          Procesando material con Gemini AI...
+        </div>
+        <div class="loading-subheading">
+          Extrayendo conceptos, construyendo grafos visuales y preparando guías de estudio
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         VISTA 1: CREAR APUNTE (FORMULARIO LIMPIO Y ENFOCADO)
+    ======================================================== -->
+    <section id="view-create" class="view-panel active">
+      <div class="centered-narrow-container">
+        
+        <div class="card-box panel-padded">
+          <div class="view-intro-header">
+            <h2 class="view-main-title">
+              <svg class="svg-icon" style="color: var(--primary);" viewBox="0 0 24 24">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              Nuevo Material de Clase
+            </h2>
+            <p class="view-sub-title">
+              Selecciona el tipo de entrada para transcribir y sintetizar visualmente tu clase universitaria.
+            </p>
+          </div>
+
+          <!-- Selector de Modo de Entrada -->
+          <div class="segment-tabs" style="margin-bottom: 1.5rem;">
+            <button class="segment-btn active" data-type="text">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              Notas de Texto
+            </button>
+            <button class="segment-btn" data-type="audio">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="22"/>
+              </svg>
+              Audio (Voz / Archivo)
+            </button>
+            <button class="segment-btn" data-type="image">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <circle cx="9" cy="9" r="2"/>
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+              </svg>
+              Fotografía de Pizarra
+            </button>
+          </div>
+
+          <!-- 1. PANEL TEXTO -->
+          <div id="panel-text" class="input-panel-section">
+            <div class="form-group">
+              <label class="form-label">Apuntes o Contenido Dictado en Clase</label>
+              <textarea id="text-content-input" class="form-textarea" placeholder="Pega aquí el contenido de la clase, conceptos clave dictados por el profesor o lecturas obligatorias..."></textarea>
+            </div>
+          </div>
+
+          <!-- 2. PANEL AUDIO -->
+          <div id="panel-audio" class="input-panel-section" style="display: none;">
+            <div class="recorder-card">
+              <span id="record-status-label" class="recorder-status">
+                Grabación directa desde el micrófono
+              </span>
+              <div id="record-timer" class="record-clock">00:00</div>
+              <button class="btn btn-secondary" id="btn-toggle-record" style="width: 100%; max-width: 320px;">
+                <svg class="svg-icon" viewBox="0 0 24 24">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="22"/>
+                </svg>
+                Iniciar Grabación
+              </button>
+              <audio id="recorded-audio-player" class="audio-player" controls style="display: none;"></audio>
+            </div>
+
+            <div class="divider-text">O SUBIR UN ARCHIVO DE AUDIO</div>
+
+            <div class="file-dropzone" id="audio-dropzone">
+              <svg class="dropzone-icon" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <span class="dropzone-title">Seleccionar grabación de audio</span>
+              <span class="dropzone-hint">Formatos soportados: MP3, WAV, M4A, WEBM, OGG</span>
+              <input type="file" id="audio-file-input" accept="audio/*" style="display: none;">
+            </div>
+
+            <div id="audio-file-preview" class="selected-file-chip">
+              <span id="audio-file-name" style="font-weight: 600;"></span>
+              <button class="btn btn-danger btn-icon-round" id="btn-remove-audio" style="width:28px; height:28px;">
+                <svg class="svg-icon" style="width:14px; height:14px;" viewBox="0 0 24 24">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. PANEL IMAGEN -->
+          <div id="panel-image" class="input-panel-section" style="display: none;">
+            <div class="file-dropzone" id="image-dropzone">
+              <svg class="dropzone-icon" viewBox="0 0 24 24">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <circle cx="9" cy="9" r="2"/>
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+              </svg>
+              <span class="dropzone-title">Subir fotografía de pizarra o cuaderno</span>
+              <span class="dropzone-hint">Formatos soportados: PNG, JPG, JPEG, WEBP</span>
+              <input type="file" id="image-file-input" accept="image/*" style="display: none;">
+            </div>
+
+            <div id="image-file-preview" class="selected-file-chip">
+              <span id="image-file-name" style="font-weight: 600;"></span>
+              <button class="btn btn-danger btn-icon-round" id="btn-remove-image" style="width:28px; height:28px;">
+                <svg class="svg-icon" style="width:14px; height:14px;" viewBox="0 0 24 24">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Metadatos de contexto -->
+          <div class="form-row" style="margin-top: 1.25rem;">
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Materia o Tema (Opcional)</label>
+              <input type="text" id="context-notes-input" class="form-input" placeholder="Ej: Algoritmos y Estructuras de Datos, Cálculo...">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Modelo de IA</label>
+              <select id="model-select" class="form-select">
+                <option value="gemini-flash-latest" selected>gemini-flash-latest (Recomendado)</option>
+                <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option>
+                <option value="gemini-3.5-flash">gemini-3.5-flash</option>
+                <option value="gemini-3.7-flash">gemini-3.7-flash</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Botón de acción principal -->
+          <div style="margin-top: 1.5rem;">
+            <button class="btn btn-primary btn-large" id="btn-generate-map" style="width: 100%;">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              Procesar y Generar Apunte Completo con IA
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VISTA 2: MAPA CONCEPTUAL (LIENZO COMPLETO Y ESPACIOSO)
+    ======================================================== -->
+    <section id="view-concept-map" class="view-panel">
+      <div class="full-canvas-card">
+        
+        <!-- Barra de herramientas del lienzo -->
+        <div class="canvas-toolbar">
+          <div class="canvas-title-group">
+            <h3 id="current-note-title" class="canvas-note-heading">Mapa Conceptual</h3>
+            <span id="current-note-subject" class="pill-badge pill-primary">Esperando material</span>
+            <span id="current-note-model" class="pill-badge pill-emerald">Gemini AI</span>
+          </div>
+
+          <div class="canvas-buttons-group" id="mermaid-buttons-group">
+            <button class="btn btn-secondary btn-icon-round" id="btn-zoom-in" title="Acercar (+)">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/>
+                <line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </button>
+            <button class="btn btn-secondary btn-icon-round" id="btn-zoom-out" title="Alejar (-)">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </button>
+            <button class="btn btn-secondary btn-icon-round" id="btn-zoom-reset" title="Restablecer vista">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+            </button>
+            <button class="btn btn-outline" id="btn-export-svg" title="Exportar archivo vectorial SVG">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar SVG
+            </button>
+            <button class="btn btn-primary" id="btn-export-png" title="Exportar imagen PNG">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <circle cx="9" cy="9" r="2"/>
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+              </svg>
+              Descargar PNG
+            </button>
+            <button class="btn btn-secondary" id="btn-toggle-editor-panel" title="Editar código Mermaid">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+              Editar Código
+            </button>
+          </div>
+        </div>
+
+        <!-- Cajón colapsable del editor de código Mermaid -->
+        <div id="editor-slide-drawer" class="editor-drawer" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);">
+              Código Mermaid editable:
+            </span>
+            <button class="btn btn-secondary btn-sm" id="btn-update-mermaid">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              Actualizar y Redibujar
+            </button>
+          </div>
+          <textarea id="mermaid-code-editor" class="code-editor-box" spellcheck="false"></textarea>
+        </div>
+
+        <!-- Mapa conceptual interactivo (grafo editable) -->
+        <div id="interactive-map-root" class="interactive-map-root" style="display: none;"></div>
+
+        <!-- Área de renderizado del mapa conceptual -->
+        <div class="canvas-viewport" id="diagram-viewport">
+          <div class="canvas-scaler" id="diagram-canvas">
+            <div class="empty-state-card">
+              <svg class="empty-state-icon" viewBox="0 0 24 24">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+              <div class="empty-state-title">No hay mapa generado aún</div>
+              <div class="empty-state-desc">
+                Dirígete a la pestaña "Crear Apunte", introduce un texto o sube un audio/imagen para visualizar el mapa conceptual.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VISTA 3: GUÍAS VISUALES Y ESQUEMAS GRÁFICOS (VISIBLES)
+    ======================================================== -->
+    <section id="view-visual-guides" class="view-panel">
+      <div class="content-wrapper-card">
+        
+        <div class="view-intro-header">
+          <h2 class="view-main-title">
+            <svg class="svg-icon" style="color: var(--primary);" viewBox="0 0 24 24">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+            Guías Visuales y Esquemas Gráficos
+          </h2>
+          <p class="view-sub-title">
+            Diagramas de flujo y modelos mentales visuales para comprender el funcionamiento paso a paso.
+          </p>
+        </div>
+
+        <!-- Contenedor dinámico de guías visuales con diagramas renderizados -->
+        <div id="visual-guides-container" class="visual-guides-grid">
+          <div class="empty-state-card" style="grid-column: 1 / -1; padding: 3rem;">
+            <svg class="empty-state-icon" viewBox="0 0 24 24">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+            <div class="empty-state-title">Sin esquemas visuales disponibles</div>
+            <div class="empty-state-desc">Genera un nuevo apunte para que la IA elabore los esquemas gráficos del tema.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VISTA 4: DOCUMENTO MARKDOWN (.MD) CON PREVISUALIZACIÓN RICA
+    ======================================================== -->
+    <section id="view-markdown-doc" class="view-panel">
+      <div class="content-wrapper-card">
+        
+        <!-- Barra de herramientas del documento Markdown -->
+        <div class="doc-header-bar">
+          <div>
+            <h2 class="view-main-title" style="margin-bottom: 0.2rem;">Documento de Apuntes (.md)</h2>
+            <p class="view-sub-title">Documento compatible con Obsidian, Notion, Typora y GitHub.</p>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <!-- Switch entre Vista Renderizada y Código Fuente -->
+            <div class="view-mode-pill">
+              <button class="mode-btn active" id="btn-md-preview-mode">
+                <svg class="svg-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Vista Renderizada
+              </button>
+              <button class="mode-btn" id="btn-md-source-mode">
+                <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Código Fuente
+              </button>
+            </div>
+
+            <button class="btn btn-secondary" id="btn-copy-markdown">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+              </svg>
+              Copiar
+            </button>
+            <button class="btn btn-primary" id="btn-download-markdown">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar .md
+            </button>
+            <button class="btn btn-primary" id="btn-export-pdf" style="background: linear-gradient(135deg, #dc2626, #b91c1c);">
+              <svg class="svg-icon" viewBox="0 0 24 24">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect width="12" height="8" x="6" y="14"/>
+              </svg>
+              Exportar PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. VISTA RICA RENDERIZADA DE MARKDOWN -->
+        <div id="markdown-rendered-view" class="markdown-rich-container">
+          <div class="empty-state-card" style="padding: 3rem;">
+            <svg class="empty-state-icon" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <div class="empty-state-title">Sin documento Markdown generado</div>
+            <div class="empty-state-desc">El contenido formateado con títulos, listas y diagramas aparecerá aquí tras procesar el apunte.</div>
+          </div>
+        </div>
+
+        <!-- 2. VISTA CÓDIGO FUENTE (TEXTAREA) -->
+        <div id="markdown-source-view" style="display: none;">
+          <textarea id="markdown-doc-viewer" class="markdown-raw-editor" spellcheck="false" readonly></textarea>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VISTA 5: RESUMEN Y QUIZ (ESTUDIO ACTIVO)
+    ======================================================== -->
+    <section id="view-summary-quiz" class="view-panel">
+      <div class="content-wrapper-card">
+        
+        <div class="view-intro-header">
+          <h2 class="view-main-title">
+            <svg class="svg-icon" style="color: var(--primary);" viewBox="0 0 24 24">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+            </svg>
+            Síntesis Académica y Autoevaluación
+          </h2>
+          <p class="view-sub-title">
+            Conceptos clave y preguntas tipo examen para repasar a tu propio ritmo.
+          </p>
+        </div>
+
+        <!-- Resumen Ejecutivo -->
+        <div class="study-box" style="margin-bottom: 2rem;">
+          <h3 class="study-box-title">Resumen Ejecutivo</h3>
+          <p id="res-summary-text" class="summary-paragraph">
+            El resumen pedagógico aparecerá aquí una vez procesado el material de clase.
+          </p>
+        </div>
+
+        <!-- Conceptos Fundamentales -->
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="study-box-title" style="margin-bottom: 1rem;">Conceptos Esenciales Extraídos</h3>
+          <ul id="res-key-points-list" class="key-points-grid">
+            <li class="point-chip" style="grid-column: 1/-1; color: var(--text-muted);">Sin conceptos extraídos aún.</li>
+          </ul>
+        </div>
+
+        <!-- Quiz / Preguntas de Autoevaluación -->
+        <div>
+          <h3 class="study-box-title" style="margin-bottom: 1rem;">Preguntas de Autoevaluación para Exámenes</h3>
+          <div id="res-quiz-container" class="quiz-stack">
+            <div class="empty-state-card" style="padding: 2rem;">
+              <div class="empty-state-title">No hay preguntas de repaso generadas aún</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cronología de fechas / etapas -->
+        <div id="res-timeline-wrap" style="margin-top: 2.5rem; display: none;">
+          <h3 class="study-box-title" style="margin-bottom: 1rem;">Línea de Tiempo</h3>
+          <ol id="res-timeline-list" class="timeline-list"></ol>
+        </div>
+
+        <!-- Tablas comparativas -->
+        <div id="res-tables-wrap" style="margin-top: 2.5rem; display: none;">
+          <h3 class="study-box-title" style="margin-bottom: 1rem;">Tablas Comparativas</h3>
+          <div id="res-tables-container" class="tables-container"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VISTA 6: TRANSCRIPCIÓN Y CONTENIDO LIMPIO
+    ======================================================== -->
+    <section id="view-transcription" class="view-panel">
+      <div class="content-wrapper-card">
+
+        <div class="view-intro-header">
+          <h2 class="view-main-title">
+            <svg class="svg-icon" style="color: var(--primary);" viewBox="0 0 24 24">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+            </svg>
+            Descripción, Apuntes y Transcripción
+          </h2>
+          <p class="view-sub-title">
+            Todo lo que se habló o escribió en clase: descripción, contenido ordenado, apuntes y la transcripción completa.
+          </p>
+        </div>
+
+        <!-- Descripción del material -->
+        <div class="study-box" style="margin-bottom: 2rem;">
+          <h3 class="study-box-title">🎧 Descripción del Material</h3>
+          <p id="res-audio-description" class="summary-paragraph">
+            La descripción del audio o material aparecerá aquí tras procesarlo.
+          </p>
+        </div>
+
+        <!-- Palabras clave -->
+        <div style="margin-bottom: 2rem;">
+          <h3 class="study-box-title" style="margin-bottom: 1rem;">🔑 Palabras Clave</h3>
+          <div id="res-keywords-container" class="keyword-chips-wrap">
+            <span class="keyword-chip" style="color: var(--text-muted);">Sin palabras clave aún.</span>
+          </div>
+        </div>
+
+        <!-- Apuntes estructurados -->
+        <div class="study-box" style="margin-bottom: 2rem;">
+          <h3 class="study-box-title">📝 Apuntes Estructurados</h3>
+          <div id="res-notes-container" class="markdown-rich-container" style="padding: 0;">
+            <p class="summary-paragraph" style="color: var(--text-muted);">Los apuntes estructurados aparecerán aquí.</p>
+          </div>
+        </div>
+
+        <!-- Contenido ordenado y limpio -->
+        <div class="study-box" style="margin-bottom: 2rem;">
+          <h3 class="study-box-title">🧹 Contenido Ordenado y Limpio</h3>
+          <div id="res-clean-text" class="transcript-scroll-box">
+            <p class="summary-paragraph" style="color: var(--text-muted);">La versión limpia y ordenada aparecerá aquí.</p>
+          </div>
+        </div>
+
+        <!-- Transcripción completa -->
+        <div class="study-box">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <h3 class="study-box-title" style="margin-bottom:0;">📄 Transcripción Completa</h3>
+            <button class="btn btn-secondary btn-sm" id="btn-copy-transcription">
+              <svg class="svg-icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              Copiar transcripción
+            </button>
+          </div>
+          <div id="res-transcription-text" class="transcript-scroll-box" style="margin-top:1rem;">
+            <p class="summary-paragraph" style="color: var(--text-muted);">La transcripción completa del audio aparecerá aquí.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="view-web-resources" class="view-panel">
+      <div class="content-wrapper-card">
+        
+        <div class="view-intro-header">
+          <h2 class="view-main-title">
+            <svg class="svg-icon" style="color: var(--primary);" viewBox="0 0 24 24">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            Recursos Multimedia y Enlaces Web Recomendados
+          </h2>
+          <p class="view-sub-title">
+            Videos de YouTube, enciclopedias y lecturas para profundizar en el tema.
+          </p>
+        </div>
+
+        <!-- 1. Videos YouTube -->
+        <div class="resource-block">
+          <h3 class="resource-block-heading" style="color: #dc2626;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Videos Explicativos en YouTube
+          </h3>
+          <div id="res-youtube-links" class="cards-auto-grid"></div>
+        </div>
+
+        <!-- 2. Sitios Web y Documentación -->
+        <div class="resource-block">
+          <h3 class="resource-block-heading" style="color: #0284c7;">
+            <svg class="svg-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            </svg>
+            Documentación y Referencias Académicas
+          </h3>
+          <div id="res-website-links" class="cards-auto-grid"></div>
+        </div>
+
+        <!-- 3. Blogs y Tutoriales -->
+        <div class="resource-block">
+          <h3 class="resource-block-heading" style="color: #7c3aed;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Blogs y Guías Prácticas
+          </h3>
+          <div id="res-blog-links" class="cards-auto-grid"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VISTA 7: MIS APUNTES GUARDADOS (BIBLIOTECA)
+    ======================================================== -->
+    <section id="view-library" class="view-panel">
+      <div class="content-wrapper-card">
+        
+        <div class="doc-header-bar" style="margin-bottom: 1.5rem;">
+          <div>
+            <h2 class="view-main-title" style="margin-bottom: 0.2rem;">Biblioteca de Apuntes Guardados</h2>
+            <p class="view-sub-title">Historial persistente de mapas conceptuales y notas en tu base de datos SQLite.</p>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <input type="text" id="library-search-input" class="form-input" style="width: 250px;" placeholder="Buscar en títulos o materias...">
+            <select id="library-type-filter" class="form-select" style="width: 150px;">
+              <option value="all">Todos los tipos</option>
+              <option value="audio">Audios</option>
+              <option value="image">Imágenes</option>
+              <option value="text">Textos</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Cuadrícula de apuntes guardados -->
+        <div class="cards-auto-grid" id="notes-library-grid"></div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CONTENEDOR TOAST NOTIFICATIONS -->
+  <div class="toast-stack" id="toast-container"></div>
+
+  <!-- SCRIPTS DE LA APLICACIÓN -->
+  <script src="/static/js/audio.js?v=__STATIC_VERSION__"></script>
+  <script src="/static/js/diagram.js?v=__STATIC_VERSION__"></script>
+  <script src="/static/js/conceptmap.js?v=__STATIC_VERSION__"></script>
+  <script src="/static/js/auth.js?v=__STATIC_VERSION__"></script>
+  <script src="/static/js/app.js?v=__STATIC_VERSION__"></script>
+</body>
+</html>

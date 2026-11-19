@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisualNotes AI — Apuntes inteligentes para estudiantes universitarios</title>
+  <meta name="description" content="VisualNotes AI transforma audios de clase, fotos de pizarra y notas en mapas conceptuales, resúmenes, palabras clave y documentos listos para estudiar. Proyecto open source hecho para estudiantes universitarios.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Three.js para los elementos 3D -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- ==========================================================
+       CONFIGURACIÓN DEL REPOSITORIO OFICIAL
+       La URL de GITHUB_REPO ya está publicada; cámbiala solo si el proyecto se muda.
+  ========================================================== -->
+  <script>
+    window.VISUALNOTES = {
+      GITHUB_REPO: "https://github.com/nexusdigitalsolutionspa-maker/visualnotesia",
+      APP_URL: "/app",                   // ruta de la aplicación principal
+      CONTACT_EMAIL: "demo@cenfotec.ac.cr"
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #f6f5ff;
+      --paper: #ffffff;
+      --ink: #1f1b3a;
+      --ink-soft: #575178;
+      --ink-muted: #8a85a8;
+      --line: rgba(99, 91, 255, 0.14);
+      --line-strong: rgba(99, 91, 255, 0.26);
+      --primary: #6366f1;
+      --primary-2: #a855f7;
+      --pink: #ec4899;
+      --cyan: #06b6d4;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --orange: #fb7185;
+      --radius: 24px;
+      --shadow-sm: 0 6px 18px rgba(60, 50, 130, 0.08);
+      --shadow-md: 0 18px 40px rgba(60, 50, 130, 0.12);
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fondo suave con blobs pastel + grid tipo cuaderno */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(760px 520px at 8% -8%, rgba(168, 85, 247, 0.16), transparent 62%),
+        radial-gradient(700px 520px at 98% 4%, rgba(6, 182, 212, 0.14), transparent 62%),
+        radial-gradient(820px 620px at 50% 112%, rgba(236, 72, 153, 0.12), transparent 62%);
+      z-index: -2;
+      pointer-events: none;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(99, 91, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 91, 255, 0.045) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at 50% 8%, #000 0%, transparent 82%);
+      -webkit-mask-image: radial-gradient(circle at 50% 8%, #000 0%, transparent 82%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    section { position: relative; padding: 96px 0; }
+
+    /* ============================ NAV ============================ */
+    header.nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.72);
+      border-bottom: 1px solid transparent;
+      transition: all .3s ease;
+    }
+    header.nav.scrolled {
+      border-bottom-color: var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 24px rgba(60, 50, 130, 0.06);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem;
+      color: var(--ink); text-decoration: none;
+      font-family: "Poppins", sans-serif;
+    }
+    .brand-badge {
+      width: 40px; height: 40px; border-radius: 13px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 22px rgba(99, 102, 241, 0.4);
+      transform: rotate(-4deg);
+    }
+    .brand-badge svg { width: 22px; height: 22px; stroke: #fff; }
+    .brand small { display: block; font-size: 0.7rem; font-weight: 500; color: var(--ink-muted); letter-spacing: 0; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a.navlink {
+      color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a.navlink:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 12px 22px; border-radius: 999px;
+      font-weight: 600; font-size: 0.92rem; text-decoration: none;
+      border: 1px solid var(--line); color: var(--ink);
+      background: #fff;
+      cursor: pointer; transition: all .22s ease;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      border-color: transparent; color: #fff;
+      box-shadow: 0 12px 26px rgba(124, 90, 240, 0.42);
+    }
+    .btn-primary:hover { box-shadow: 0 16px 34px rgba(124, 90, 240, 0.55); }
+    .btn-ghost { background: #fff; color: var(--ink); }
+    .btn svg { width: 18px; height: 18px; }
+
+    /* ============================ HERO ============================ */
+    .hero { padding-top: 150px; padding-bottom: 80px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px; align-items: center;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 8px 16px; border-radius: 999px;
+      background: #fff; border: 1px solid var(--line);
+      font-size: 0.8rem; color: var(--ink-soft); font-weight: 600;
+      margin-bottom: 24px; box-shadow: var(--shadow-sm);
+    }
+    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(16,185,129,0.18); }
+
+    h1.hero-title {
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(2.3rem, 5.2vw, 3.9rem);
+      line-height: 1.09; letter-spacing: -0.02em; font-weight: 700;
+      margin-bottom: 22px; color: var(--ink);
+    }
+    .highlight {
+      position: relative; white-space: nowrap;
+      background: linear-gradient(180deg, transparent 58%, #ffe08a 58%, #ffd15c 92%, transparent 92%);
+      border-radius: 6px; padding: 0 4px;
+    }
+    .gradient-text {
+      background: linear-gradient(105deg, var(--primary) 0%, var(--primary-2) 55%, var(--pink) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--ink-soft); max-width: 560px; margin-bottom: 32px;
+    }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 40px; }
+
+    .hero-stats { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-stats .stat {
+      background: #fff; border: 1px solid var(--line); border-radius: 16px;
+      padding: 12px 18px; box-shadow: var(--shadow-sm);
+    }
+    .hero-stats .stat strong {
+      display: block; font-size: 1.35rem; font-family: "Poppins", sans-serif;
+      background: linear-gradient(120deg, var(--primary), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-stats .stat span { font-size: 0.78rem; color: var(--ink-muted); }
+
+    /* Escena 3D */
+    .scene-wrap {
+      position: relative; height: 460px; border-radius: 30px;
+      background:
+        radial-gradient(circle at 30% 25%, #eef0ff 0%, transparent 60%),
+        radial-gradient(circle at 75% 80%, #fdeffb 0%, transparent 60%),
+        #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    #three-canvas { width: 100%; height: 100%; display: block; }
+    .scene-fallback {
+      position: absolute; inset: 0; display: grid; place-items: center;
+      color: var(--ink-muted); font-size: 0.9rem;
+    }
+    .scene-float {
+      position: absolute; padding: 10px 16px; border-radius: 14px;
+      background: #fff; border: 1px solid var(--line);
+      font-size: 0.78rem; font-weight: 700; color: var(--ink);
+      box-shadow: var(--shadow-md);
+      animation: floaty 5s ease-in-out infinite;
+    }
+    .scene-float.a { top: 32px; left: 24px; animation-delay: 0s; transform: rotate(-4deg); }
+    .scene-float.b { bottom: 38px; right: 26px; animation-delay: 1.2s; transform: rotate(3deg); }
+    .scene-float.c { top: 46%; right: 20px; animation-delay: 2.1s; transform: rotate(-2deg); }
+    @keyframes floaty {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -14px; }
+    }
+
+    /* ============================ TRUST ============================ */
+    .trust { padding: 10px 0 36px; }
+    .trust p { text-align: center; color: var(--ink-muted); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .trust-item {
+      padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line);
+      background: #fff; color: var(--ink-soft); font-size: 0.85rem; font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ============================ SECTION HEADERS ============================ */
+    .sec-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .sec-eyebrow {
+      color: var(--primary-2); font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .sec-head h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.15;
+      margin-bottom: 16px; color: var(--ink);
+    }
+    .sec-head p { color: var(--ink-soft); font-size: 1.02rem; }
+
+    /* ============================ FEATURES 3D ============================ */
+    .cards-3d {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      perspective: 1400px;
+    }
+    .card3d {
+      position: relative;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transform-style: preserve-3d;
+      transition: transform .18s ease, border-color .3s ease, box-shadow .3s ease;
+      will-change: transform;
+      overflow: hidden;
+    }
+    .card3d::after {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(124, 90, 240, 0.10), transparent 45%);
+      opacity: 0; transition: opacity .3s ease; pointer-events: none;
+    }
+    .card3d:hover { border-color: var(--line-strong); box-shadow: var(--shadow-md); }
+    .card3d:hover::after { opacity: 1; }
+    .card3d .icon {
+      width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+      margin-bottom: 20px; transform: translateZ(40px);
+      background: linear-gradient(135deg, rgba(99,102,241,0.16), rgba(168,85,247,0.14));
+      border: 1px solid var(--line);
+    }
+    .card3d .icon svg { width: 26px; height: 26px; stroke: var(--primary); }
+    .card3d h3 { font-size: 1.14rem; margin-bottom: 10px; transform: translateZ(28px); letter-spacing: -0.01em; font-family: "Poppins", sans-serif; color: var(--ink); }
+    .card3d p { color: var(--ink-soft); font-size: 0.94rem; transform: translateZ(16px); }
+
+    /* ============================ STEPS ============================ */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .step {
+      position: relative; padding: 32px 28px; border-radius: var(--radius);
+      border: 1px solid var(--line); background: #fff; box-shadow: var(--shadow-sm);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .step:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .step .num {
+      font-family: "Poppins", sans-serif; width: 56px; height: 56px; border-radius: 16px;
+      display: grid; place-items: center; font-size: 1.4rem; font-weight: 800;
+      color: #fff; margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 12px 24px rgba(124,90,240,0.35);
+    }
+    .step h3 { font-size: 1.12rem; margin-bottom: 8px; font-family: "Poppins", sans-serif; }
+    .step p { color: var(--ink-soft); font-size: 0.93rem; }
+
+    /* ============================ AUDIENCE ============================ */
+    .audience {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+      border: 1px solid var(--line); border-radius: 30px; padding: 48px;
+      background: linear-gradient(150deg, rgba(99,102,241,0.10), rgba(236,72,153,0.06));
+      box-shadow: var(--shadow-sm);
+    }
+    .audience h2 { font-family: "Poppins", sans-serif; font-size: clamp(1.65rem, 3vw, 2.25rem); line-height: 1.16; margin-bottom: 18px; }
+    .audience p { color: var(--ink-soft); margin-bottom: 22px; }
+    .check-list { list-style: none; display: grid; gap: 14px; }
+    .check-list li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink-soft); font-size: 0.96rem; }
+    .check-list .tick {
+      flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16,185,129,0.4);
+    }
+    .check-list .tick svg { width: 13px; height: 13px; stroke: var(--green); }
+    .stack-visual { display: grid; gap: 16px; }
+    .stack-chip {
+      display: flex; align-items: center; gap: 14px; padding: 16px 18px;
+      border-radius: 18px; border: 1px solid var(--line); background: #fff;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .stack-chip:hover { transform: translateX(6px); border-color: var(--line-strong); }
+    .stack-chip .sq { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; flex: none; }
+    .stack-chip strong { display: block; font-size: 0.95rem; font-family: "Poppins", sans-serif; }
+    .stack-chip span { font-size: 0.8rem; color: var(--ink-muted); }
+
+    /* ============================ CONTRIBUTE ============================ */
+    .contribute {
+      border-radius: 30px; padding: 56px 48px;
+      border: 1px solid var(--line-strong);
+      background:
+        radial-gradient(600px 300px at 12% 0%, rgba(168,85,247,0.18), transparent 62%),
+        radial-gradient(600px 300px at 92% 100%, rgba(6,182,212,0.16), transparent 62%),
+        #ffffff;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .contribute h2 { font-family: "Poppins", sans-serif; font-size: clamp(1.7rem, 3.3vw, 2.5rem); margin-bottom: 16px; letter-spacing: -0.02em; }
+    .contribute p.lead { color: var(--ink-soft); max-width: 640px; margin: 0 auto 34px; }
+    .contrib-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; text-align: left; margin-bottom: 40px; }
+    .contrib-card {
+      padding: 22px; border-radius: 18px; border: 1px solid var(--line); background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .contrib-card .ci { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 14px; background: linear-gradient(135deg, rgba(99,102,241,0.16), rgba(168,85,247,0.14)); border: 1px solid var(--line); }
+    .contrib-card .ci svg { width: 20px; height: 20px; stroke: var(--primary); }
+    .contrib-card h4 { font-size: 1rem; margin-bottom: 6px; font-family: "Poppins", sans-serif; }
+    .contrib-card p { color: var(--ink-muted); font-size: 0.85rem; }
+
+    .github-cta { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; }
+    .btn-github {
+      background: #1f2233; border: 1px solid #1f2233; color: #fff;
+      font-weight: 700; padding: 14px 26px; font-size: 1rem;
+      box-shadow: 0 12px 28px rgba(31, 34, 51, 0.28);
+    }
+    .btn-github:hover { background: #2a2e45; border-color: #2a2e45; transform: translateY(-2px); }
+    .btn-github svg { width: 22px; height: 22px; fill: #fff; stroke: none; }
+    .soon-badge {
+      font-size: 0.72rem; padding: 5px 12px; border-radius: 999px;
+      background: rgba(245,158,11,0.14); color: #b45309; border: 1px solid rgba(245,158,11,0.4);
+      font-weight: 700; letter-spacing: 0.04em;
+    }
+
+    /* ============================ CTA FINAL ============================ */
+    .cta-banner {
+      border-radius: 30px; padding: 60px 40px; text-align: center; color: #fff;
+      background: linear-gradient(120deg, var(--primary) 0%, var(--primary-2) 55%, var(--pink) 100%);
+      box-shadow: 0 28px 60px rgba(124, 90, 240, 0.35);
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+      background-size: 26px 26px; opacity: 0.5; pointer-events: none;
+    }
+    .cta-banner .sec-eyebrow { color: rgba(255,255,255,0.85); }
+    .cta-banner h2 { font-family: "Poppins", sans-serif; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 14px; letter-spacing: -0.02em; }
+    .cta-banner p { color: rgba(255,255,255,0.92); max-width: 620px; margin: 0 auto 30px; }
+    .cta-banner .btn-primary { background: #fff; color: var(--primary); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+    .cta-banner .btn-ghost { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.45); color: #fff; box-shadow: none; }
+    .cta-banner .btn-ghost:hover { background: rgba(255,255,255,0.24); }
+    .cta-banner .hero-cta { justify-content: center; margin-bottom: 0; }
+
+    /* ============================ FOOTER ============================ */
+    footer { border-top: 1px solid var(--line); padding: 46px 0; color: var(--ink-muted); font-size: 0.88rem; }
+    .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; }
+    .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .footer-links a { color: var(--ink-soft); text-decoration: none; transition: color .2s; font-weight: 500; }
+    .footer-links a:hover { color: var(--primary); }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ============================ RESPONSIVE ============================ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .scene-wrap { height: 360px; order: -1; }
+      .audience { grid-template-columns: 1fr; padding: 34px 26px; }
+      section { padding: 72px 0; }
+      .nav-links .navlink { display: none; }
+      .contribute { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+        </span>
+        <span>VisualNotes AI<small>Asistente visual universitario</small></span>
+      </a>
+
+      <nav class="nav-links">
+        <a class="navlink" href="#features">Funciones</a>
+        <a class="navlink" href="#como-funciona">Cómo funciona</a>
+        <a class="navlink" href="#estudiantes">Para estudiantes</a>
+        <a class="navlink" href="#contribuir">Contribuir</a>
+        <a class="btn btn-primary" href="#" data-app-link>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Probar la app
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><span class="dot"></span> Proyecto académico · Universidad Cenfotec</span>
+        <h1 class="hero-title">
+          Convierte tus clases en <span class="highlight">apuntes inteligentes</span> en segundos.
+        </h1>
+        <p class="hero-sub">
+          VisualNotes AI transcribe tus audios de clase, fotos de pizarra y notas sueltas, y las
+          transforma en mapas conceptuales, resúmenes, palabras clave y documentos listos para
+          estudiar o exportar a PDF.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#" data-app-link>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Probar VisualNotes AI
+          </a>
+          <a class="btn btn-ghost" href="#contribuir">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/><path d="M14 2c-1 .5-2 2-2 5"/></svg>
+            Quiero contribuir
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><strong>3</strong><span>Audios · Imágenes · Texto</span></div>
+          <div class="stat"><strong>+7</strong><span>Entregables por apunte</span></div>
+          <div class="stat"><strong>MD + PDF</strong><span>Listo para estudiar</span></div>
+        </div>
+      </div>
+
+      <div class="scene-wrap">
+        <canvas id="three-canvas"></canvas>
+        <div class="scene-fallback" id="scene-fallback" style="display:none;">
+          <span>VisualNotes AI · mapa conceptual 3D</span>
+        </div>
+        <div class="scene-float a">🎧 Transcripción completa</div>
+        <div class="scene-float b">🔑 Palabras clave</div>
+        <div class="scene-float c">🗺️ Mapa conceptual</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== TRUST ============================== -->
+  <section class="trust" style="padding-top:0;">
+    <div class="wrap">
+      <p>Genera todo esto a partir de una sola fuente</p>
+      <div class="trust-row">
+        <span class="trust-item">📄 Transcripción completa</span>
+        <span class="trust-item">🧹 Contenido limpio y ordenado</span>
+        <span class="trust-item">🗺️ Mapa conceptual Mermaid</span>
+        <span class="trust-item">📌 Resumen ejecutivo</span>
+        <span class="trust-item">📝 Apuntes estructurados</span>
+        <span class="trust-item">❓ Quiz de autoevaluación</span>
+        <span class="trust-item">🔗 Recursos recomendados</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FEATURES ============================== -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">Todo en una sola herramienta</div>
+        <h2>Un kit de estudio completo, generado por IA</h2>
+        <p>Deja de perder tiempo pasando apuntes a mano. Sube una fuente y obtén todos los materiales que necesitas para estudiar y repasar.</p>
+      </div>
+
+      <div class="cards-3d">
+        <article class="card3d reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div>
+          <h3>Transcripción completa del audio</h3>
+          <p>Graba la clase o sube un archivo y obtén TODO lo que se habló, sin resumir ni omitir, además de una versión limpia y ordenada por temas.</p>
+        </article>
+
+        <article class="card3d reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+          <h3>Mapas conceptuales visuales</h3>
+          <p>Diagramas jerárquicos en Mermaid que conectan los conceptos clave. Edítalos, haz zoom y expórtalos en SVG o PNG.</p>
+        </article>
+
+        <article class="card3d reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <h3>Apuntes y documentos MD/PDF</h3>
+          <p>Documentos estructurados listos para Obsidian o Notion y exportables a PDF con un clic, para imprimir o compartir.</p>
+        </article>
+
+        <article class="card3d reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+          <h3>Resumen y palabras clave</h3>
+          <p>Síntesis pedagógica y los términos más importantes del tema para repasar rápido antes del examen.</p>
+        </article>
+
+        <article class="card3d reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3>Quiz de autoevaluación</h3>
+          <p>Preguntas tipo examen con respuestas desplegables para ponerte a prueba y llegar preparado a la evaluación.</p>
+        </article>
+
+        <article class="card3d reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+          <h3>Guías visuales y recursos</h3>
+          <p>Esquemas gráficos, modelos mentales y enlaces recomendados a videos, documentación y blogs para profundizar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CÓMO FUNCIONA ============================== -->
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">Simple como 1, 2, 3</div>
+        <h2>Cómo funciona</h2>
+        <p>Sin instalar nada complicado: graba, procesa y estudia.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <h3>Sube tu material</h3>
+          <p>Graba el audio de la clase en vivo, sube una foto de la pizarra o pega tus notas de texto.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">02</div>
+          <h3>La IA lo procesa</h3>
+          <p>Gemini analiza el contenido y genera transcripción, resumen, mapa conceptual, apuntes y más.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">03</div>
+          <h3>Estudia y comparte</h3>
+          <p>Repasa el material, autoevalúate y exporta todo a Markdown o PDF para llevarlo contigo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== AUDIENCE ============================== -->
+  <section id="estudiantes">
+    <div class="wrap">
+      <div class="audience reveal">
+        <div>
+          <div class="sec-eyebrow" style="text-align:left;">Diseñado para estudiantes universitarios</div>
+          <h2>Hecho por y para la vida universitaria</h2>
+          <p>Pensado para el ritmo real de la universidad: clases rápidas, apuntes incompletos y exámenes acumulativos.</p>
+          <ul class="check-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Nunca más pierdas lo que dijo el profesor en clase.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Convierte apuntes desordenados en material de estudio.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Estudia con mapas visuales y autoevaluación, no solo leyendo.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Comparte apuntes en PDF con tus compañeros en segundos.</li>
+          </ul>
+        </div>
+
+        <div class="stack-visual">
+          <div class="stack-chip">
+            <span class="sq" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+            </span>
+            <div><strong>Ingeniería y ciencias exactas</strong><span>Cálculo, física, algoritmos, redes…</span></div>
+          </div>
+          <div class="stack-chip">
+            <span class="sq" style="background:linear-gradient(135deg,#06b6d4,#22d3ee);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </span>
+            <div><strong>Carreras con mucha teoría</strong><span>Derecho, medicina, administración…</span></div>
+          </div>
+          <div class="stack-chip">
+            <span class="sq" style="background:linear-gradient(135deg,#ec4899,#f472b6);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <div><strong>Estudio con poco tiempo</strong><span>Aprovecha cada minuto antes del examen</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CONTRIBUIR ============================== -->
+  <section id="contribuir">
+    <div class="wrap">
+      <div class="contribute reveal">
+        <span class="soon-badge">OPEN SOURCE · EN CRECIMIENTO</span>
+        <h2 style="margin-top:18px;">Ayúdanos a construir VisualNotes AI</h2>
+        <p class="lead">
+          VisualNotes AI es un proyecto abierto. Puedes contribuir con código, ideas, diseño o
+          documentación. El repositorio ya está publicado en GitHub y cualquier estudiante puede
+          sumarse desde el Issue #1.
+        </p>
+
+        <div class="contrib-grid">
+          <div class="contrib-card">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <h4>Contribuye con código</h4>
+            <p>Haz un fork, crea una rama y envía un Pull Request con tu mejora o corrección.</p>
+          </div>
+          <div class="contrib-card">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+            <h4>Reporta ideas y errores</h4>
+            <p>Abre un Issue para proponer funciones, reportar fallos o sugerir mejoras de estudio.</p>
+          </div>
+          <div class="contrib-card">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+            <h4>Mejora el contenido</h4>
+            <p>Ayuda con la documentación, traducciones, diseño y ejercicios de ejemplo para estudiantes.</p>
+          </div>
+        </div>
+
+        <div class="github-cta">
+          <a class="btn btn-github" href="#" data-github>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.57v-2.02c-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.34-1.73-1.34-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.22 1.84 1.22 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.57-2.67-.3-5.47-1.31-5.47-5.82 0-1.29.47-2.34 1.23-3.17-.12-.3-.53-1.5.12-3.13 0 0 1-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.29-1.21 3.29-1.21.65 1.63.24 2.83.12 3.13.77.83 1.23 1.88 1.23 3.17 0 4.52-2.8 5.51-5.49 5.8.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57A12.02 12.02 0 0 0 24 12.29C24 5.78 18.63.5 12 .5Z"/></svg>
+            Ver repositorio en GitHub
+          </a>
+          <a class="soon-badge" href="https://github.com/nexusdigitalsolutionspa-maker/visualnotesia/issues/1" target="_blank" rel="noopener">Deja tu comentario en el Issue #1</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CTA FINAL ============================== -->
+  <section id="empezar" style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-banner reveal">
+        <div class="sec-eyebrow">Empieza gratis</div>
+        <h2>¿Listo para estudiar más inteligente?</h2>
+        <p>Abre la aplicación, sube tu primera clase y genera tu apunte completo en minutos.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#" data-app-link>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Abrir VisualNotes AI
+          </a>
+          <a class="btn btn-ghost" href="#contribuir">Ser parte del proyecto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <strong style="color:var(--ink);">VisualNotes AI</strong> — Proyecto Grupo 4 · Universidad Cenfotec.
+      </div>
+      <div class="footer-links">
+        <a href="#features">Funciones</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#contribuir">Contribuir</a>
+        <a href="#" data-github>GitHub</a>
+        <a href="#" data-app-link>Aplicación</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================ LINKS DINÁMICOS ============================
+    (function () {
+      const cfg = window.VISUALNOTES || {};
+      document.querySelectorAll("[data-app-link]").forEach(function (el) {
+        el.setAttribute("href", cfg.APP_URL || "/");
+      });
+      document.querySelectorAll("[data-github]").forEach(function (el) {
+        el.setAttribute("href", cfg.GITHUB_REPO || "#");
+        if (!cfg.GITHUB_REPO || cfg.GITHUB_REPO === "#") {
+          el.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Todavía no hay un repositorio configurado. ¡Gracias por querer contribuir!");
+          });
+        } else {
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener");
+        }
+      });
+    })();
+
+    // ============================ NAV SCROLL ============================
+    (function () {
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 20) nav.classList.add("scrolled");
+        else nav.classList.remove("scrolled");
+      });
+    })();
+
+    // ============================ MODO CAPTURA ============================
+    // ?capture desactiva animaciones para obtener capturas limpias (marketing)
+    (function () {
+      if (location.search.indexOf("capture") === -1) return;
+      document.documentElement.style.scrollBehavior = "auto";
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+
+      function publishOffsets() {
+        const ids = ["top", "features", "como-funciona", "estudiantes", "contribuir", "empezar"];
+        const offs = {};
+        ids.forEach(function (id) {
+          const el = document.getElementById(id);
+          if (el) offs[id] = Math.round(el.getBoundingClientRect().top + window.pageYOffset);
+        });
+        offs["_total"] = Math.round(document.body.scrollHeight);
+        let marker = document.getElementById("capture-offsets");
+        if (!marker) {
+          marker = document.createElement("div");
+          marker.id = "capture-offsets";
+          marker.style.display = "none";
+          document.body.appendChild(marker);
+        }
+        marker.textContent = JSON.stringify(offs);
+      }
+
+      publishOffsets();
+      window.addEventListener("load", function () {
+        document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+        publishOffsets();
+        setTimeout(publishOffsets, 500);
+      });
+    })();
+
+    // ============================ REVEAL ON SCROLL ============================
+    (function () {
+      const els = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    // ============================ TILT 3D EN TARJETAS ============================
+    (function () {
+      document.querySelectorAll(".card3d").forEach(function (card) {
+        card.addEventListener("mousemove", function (e) {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+          card.style.setProperty("--mx", (px * 100) + "%");
+          card.style.setProperty("--my", (py * 100) + "%");
+          const rx = (0.5 - py) * 10;
+          const ry = (px - 0.5) * 12;
+          card.style.transform = "rotateX(" + rx + "deg) rotateY(" + ry + "deg) translateY(-6px)";
+        });
+        card.addEventListener("mouseleave", function () {
+          card.style.transform = "rotateX(0) rotateY(0) translateY(0)";
+        });
+      });
+    })();
+
+    // ============================ ESCENA 3D (THREE.JS) ============================
+    (function () {
+      const canvas = document.getElementById("three-canvas");
+      const fallback = document.getElementById("scene-fallback");
+      if (!canvas || typeof THREE === "undefined") {
+        if (fallback) fallback.style.display = "grid";
+        return;
+      }
+
+      const wrap = canvas.parentElement;
+      const scene = new THREE.Scene();
+
+      const camera = new THREE.PerspectiveCamera(55, wrap.clientWidth / wrap.clientHeight, 0.1, 1000);
+      camera.position.z = 7;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      // Núcleo: icosaedro wireframe
+      const coreGeo = new THREE.IcosahedronGeometry(1.9, 1);
+      const core = new THREE.Mesh(
+        coreGeo,
+        new THREE.MeshBasicMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.55 })
+      );
+      group.add(core);
+
+      // Capa exterior con otro color
+      const outer = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(2.7, 0),
+        new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.3 })
+      );
+      group.add(outer);
+
+      // Nodos (esferas) que simbolizan conceptos conectados
+      const nodeCount = 14;
+      const nodes = [];
+      const nodeMat = new THREE.MeshBasicMaterial({ color: 0xec4899 });
+      const nodeGeo = new THREE.SphereGeometry(0.08, 12, 12);
+      for (let i = 0; i < nodeCount; i++) {
+        const s = new THREE.Mesh(nodeGeo, nodeMat);
+        const phi = Math.acos(-1 + (2 * i) / nodeCount);
+        const theta = Math.sqrt(nodeCount * Math.PI) * phi;
+        const r = 2.1;
+        s.position.set(
+          r * Math.cos(theta) * Math.sin(phi),
+          r * Math.sin(theta) * Math.sin(phi),
+          r * Math.cos(phi)
+        );
+        nodes.push(s);
+        group.add(s);
+      }
+
+      // Conexiones entre nodos (líneas)
+      const lineMat = new THREE.LineBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.4 });
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          if (nodes[i].position.distanceTo(nodes[j].position) < 2.4) {
+            const geo = new THREE.BufferGeometry().setFromPoints([nodes[i].position, nodes[j].position]);
+            group.add(new THREE.Line(geo, lineMat));
+          }
+        }
+      }
+
+      // Campo de partículas
+      const pCount = 320;
+      const positions = new Float32Array(pCount * 3);
+      for (let i = 0; i < pCount * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 22;
+      }
+      const pGeo = new THREE.BufferGeometry();
+      pGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      const particles = new THREE.Points(
+        pGeo,
+        new THREE.PointsMaterial({ color: 0x9d97d6, size: 0.06, transparent: true, opacity: 0.9 })
+      );
+      scene.add(particles);
+
+      // Interacción con el mouse (parallax)
+      let mx = 0, my = 0, tx = 0, ty = 0;
+      window.addEventListener("mousemove", function (e) {
+        mx = (e.clientX / window.innerWidth - 0.5) * 2;
+        my = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        tx += (mx - tx) * 0.05;
+        ty += (my - ty) * 0.05;
+
+        group.rotation.y += 0.0032;
+        group.rotation.x += 0.0014;
+        outer.rotation.y -= 0.0022;
+        outer.rotation.z += 0.0016;
+        particles.rotation.y += 0.0004;
+
+        camera.position.x += (tx * 0.9 - camera.position.x) * 0.05;
+        camera.position.y += (-ty * 0.7 - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener("resize", function () {
+        const w = wrap.clientWidth, h = wrap.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+    })();
+  </script>
+</body>
+</html>
