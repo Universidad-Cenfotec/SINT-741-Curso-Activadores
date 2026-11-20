@@ -7,7 +7,7 @@
 
 👉 **[Blender desde 0](https://github.com/MarioLowPoly/Blender-desde-0)**
 
-Repositorio educativo para jóvenes que empiezan en el diseño 3D y para mentores que quieran reutilizar las actividades. Nace de mi comunidad del [Reto de clase 1](../lab-01/tarea-reto-1.md): primero se dibuja un cubo con luz y sombra en papel, y después se pasa a las bases de Blender y a un primer modelo 3D.
+Repositorio educativo para jóvenes que empiezan en el diseño 3D y para mentores que quieran reutilizar las actividades. Nace de mi comunidad del [Reto de clase 1](../lab-01/lab-01-reto-clase-1.md): primero se dibuja un cubo con luz y sombra en papel, y después se pasa a las bases de Blender y a un primer modelo 3D.
 
 ## Lista del entregable
 
@@ -25,4 +25,4 @@ Repositorio educativo para jóvenes que empiezan en el diseño 3D y para mentore
 2. **¿Qué mejora propuse en el Issue?** Subir los dibujos del cubo, los modelos y los renders que ya tengo, para que quien llegue vea qué va a lograr en cada etapa.
 3. **¿Cómo podría crecer con contribuciones?** Otros jóvenes pueden subir su proceso, y otros mentores pueden agregar actividades (por ejemplo, la de masilla) o adaptarlas a su grupo, siguiendo el `CONTRIBUTING.md`.
 
-La guía del reto está en [`guia-reto-6.md`](guia-reto-6.md).
+El enunciado del reto está en [`5. Retos/Reto_Clase_6.md`](../../../5.%20Retos/Reto_Clase_6.md).
