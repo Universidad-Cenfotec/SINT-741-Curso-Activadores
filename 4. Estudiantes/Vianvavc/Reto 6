@@ -1,0 +1,104 @@
+# Clubhouse en tu Comunidad
+### Talleres STEAM para acercar la tecnología, la creatividad y el aprendizaje a más comunidades
+
+**Proyecto:** Rincón Clubhouse La Chorrera  
+**Enfoque:** aprendizaje práctico, metodologías maker, participación juvenil e innovación social.
+
+## ¿Qué es?
+
+**Clubhouse en tu Comunidad** es una iniciativa del Rincón Clubhouse La Chorrera que lleva experiencias de aprendizaje STEAM a comunidades, especialmente aquellas con menos oportunidades de acceso a espacios tecnológicos.
+
+A través de talleres prácticos, adolescentes y jóvenes pueden explorar la ciencia, la tecnología, la ingeniería, el arte y las matemáticas; experimentar con herramientas digitales y maker; trabajar colaborativamente; y desarrollar ideas relacionadas con su entorno.
+
+Este repositorio reúne orientaciones y recursos para documentar la iniciativa, compartir aprendizajes y facilitar que otras personas adapten y repliquen experiencias similares en sus comunidades.
+
+## Propósito
+
+Acercar oportunidades de aprendizaje tecnológico y creativo a las comunidades, promoviendo la participación juvenil y el uso de la tecnología como herramienta para aprender, colaborar y generar soluciones.
+
+## Objetivos
+
+- Facilitar experiencias STEAM prácticas y participativas en comunidades.
+- Despertar la curiosidad, la creatividad y el interés por la tecnología.
+- Promover el aprendizaje colaborativo y el intercambio de conocimientos.
+- Dar voz y protagonismo a adolescentes y jóvenes en el diseño de sus aprendizajes.
+- Documentar las experiencias para reconocer aprendizajes y oportunidades de mejora.
+- Motivar a participantes a compartir y multiplicar lo aprendido.
+
+## ¿Cómo trabajamos?
+
+La iniciativa se desarrolla mediante talleres presenciales adaptables al contexto, los intereses y los recursos disponibles en cada comunidad. Las actividades pueden integrar herramientas digitales, recursos maker y retos creativos.
+
+### Ruta de trabajo
+
+1. **Conocer la comunidad:** identificar participantes, intereses, necesidades, aliados y recursos disponibles.
+2. **Planificar:** seleccionar un tema STEAM, definir un reto de aprendizaje y preparar materiales.
+3. **Explorar y crear:** facilitar actividades prácticas donde los jóvenes experimenten, diseñen y construyan.
+4. **Compartir:** presentar los resultados, conversar sobre lo aprendido y escuchar las ideas de los participantes.
+5. **Documentar y mejorar:** recoger evidencias y retroalimentación para fortalecer los próximos encuentros.
+
+## Evidencia y aprendizaje
+
+Las experiencias pueden documentarse mediante fotografías, videos, registros de participación y proyectos desarrollados por los jóvenes, siempre con las autorizaciones correspondientes para el uso de imagen y respetando la privacidad de los participantes.
+
+La documentación permite reconocer los aprendizajes, observar la participación, identificar las actividades de mayor interés y detectar aspectos que pueden mejorarse.
+
+**Aprendizaje esperado:** comprender que el conocimiento tecnológico tiene mayor impacto cuando se comparte. Los jóvenes pueden convertirse en agentes de cambio y multiplicadores de conocimiento en sus comunidades.
+
+## Continuidad
+
+La propuesta contempla desarrollar un taller mensual como parte del programa Clubhouse en tu Comunidad, involucrando a miembros del Rincón Clubhouse La Chorrera en la planificación, organización y facilitación.
+
+Cada experiencia puede incorporar nuevos temas STEAM, alianzas con organizaciones comunitarias y educativas, e invitar a otros jóvenes a participar.
+
+A mediano plazo, se busca que participantes de las comunidades visitadas puedan convertirse en líderes y replicadores de los conocimientos adquiridos.
+
+> La periodicidad mensual es una propuesta de continuidad y deberá ajustarse a los recursos, alianzas y condiciones de cada comunidad.
+
+## Uso de inteligencia artificial
+
+La inteligencia artificial puede apoyar la investigación de actividades STEAM, la organización de contenidos, la generación de ideas y la preparación de materiales educativos adaptados a las edades de los participantes.
+
+Su uso debe contar con orientación de mentores, verificación de la información y promoción del pensamiento crítico, la creatividad y la responsabilidad digital. La IA es un recurso de apoyo, no sustituye las ideas ni las decisiones de los jóvenes.
+
+No se deben compartir con herramientas de IA datos personales, imágenes identificables ni información privada de participantes.
+
+## Retroalimentación
+
+Al finalizar cada taller, se recomienda recoger opiniones mediante preguntas sencillas, conversaciones grupales y espacios de reflexión:
+
+- ¿Qué aprendiste hoy?
+- ¿Qué actividad te gustó más y por qué?
+- ¿Qué dificultad encontraste?
+- ¿Qué te gustaría aprender o explorar en otro taller?
+- ¿Cómo compartirías lo aprendido con otras personas?
+
+Las respuestas ayudarán a adaptar las siguientes experiencias a los intereses y necesidades de cada comunidad.
+
+## Estructura del repositorio
+
+```text
+clubhouse-en-tu-comunidad/
+├── README.md
+├── CONTRIBUTING.md
+├── .gitignore
+├── actividades/
+│   └── README.md
+├── docs/
+│   ├── guia-de-implementacion.md
+│   ├── evidencia-y-aprendizajes.md
+│   └── uso-responsable-de-ia.md
+└── plantillas/
+    ├── planificacion-de-taller.md
+    └── retroalimentacion.md
+```
+
+## ¿Cómo puedes contribuir?
+
+Puedes compartir una actividad STEAM, adaptar una guía, proponer mejoras o documentar aprendizajes de una experiencia comunitaria. Consulta [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Créditos
+
+Iniciativa del **Rincón Clubhouse La Chorrera**, Panamá, como parte de su trabajo de acompañamiento a adolescentes y jóvenes mediante experiencias de tecnología, creatividad, innovación y aprendizaje STEAM.
+
+**Coordinación:** Vianca Cuevas.
