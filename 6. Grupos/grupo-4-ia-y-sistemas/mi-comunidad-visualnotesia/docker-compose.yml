@@ -1,0 +1,15 @@
+services:
+  visualnotes:
+    build: .
+    image: visualnotes-ai:latest
+    container_name: visualnotes-ai
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - VISUALNOTES_DB=/app/data/visualnotes.db
+    volumes:
+      # Persistencia local de los apuntes (SQLite)
+      - ./data:/app/data
+    restart: unless-stopped

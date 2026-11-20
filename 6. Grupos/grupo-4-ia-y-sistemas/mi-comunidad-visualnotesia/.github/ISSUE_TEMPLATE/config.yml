@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🔒 Reportar una vulnerabilidad
+    url: https://github.com/nexusdigitalsolutionspa-maker/visualnotesia/security/advisories/new
+    about: Por favor no reportes problemas de seguridad como issues públicos.
+  - name: 💬 Preguntas y ayuda
+    url: https://github.com/nexusdigitalsolutionspa-maker/visualnotesia/discussions
+    about: Haz preguntas o comparte ideas con la comunidad.
