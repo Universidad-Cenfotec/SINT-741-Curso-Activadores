@@ -1,0 +1,23 @@
+# Sistemas operativos
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo
+
+# Copias de seguridad y archivos temporales de Proteus
+*.pdsbak
+*.PDSBAK
+*.DBK
+*.dbk
+*.tmp
+*.bak
+*.log
+*.lock
+*.DSN.bak
+
+# Archivos temporales del editor
+.vscode/
+.idea/
+__pycache__/
