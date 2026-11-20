@@ -22,12 +22,12 @@ Esta carpeta reúne mis trabajos y entregas del curso.
 | # | Trabajo | Reto | Documentos | Estado |
 |---|---------|------|------------|--------|
 | 1 | Laboratorio 1 | [Reto de clase 1](../../5.%20Retos/Reto_Clase_1.md) | [Mi comunidad de práctica](lab-01/lab-01-reto-clase-1.md) · [Conclusión de la semana 1](lab-01/conclusion-semana-01.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 2 | Laboratorio 2 | [Reto de clase 2](../../5.%20Retos/Reto_Clase_2.md) | [Mi reto de clase 2](lab-02/lab-02-reto-clase-2.md) · [Mapa de Comunidad](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/mapa-comunidad.md) · [Prototipo](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/prototipo) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 3 | Laboratorio 3 | [Reto de clase 3](../../5.%20Retos/Reto_Clase_3.md) | [Laboratorio 3](lab-03/README.md) · [Guía para organizar un primer encuentro](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-03/guia-primer-encuentro-y-responsabilidades.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 2 | Laboratorio 2 | [Reto de clase 2](../../5.%20Retos/Reto_Clase_2.md) | [Tú Decides](lab-02/lab-02-reto-clase-2.md) · Grupo: [Mapa de Comunidad](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/mapa-comunidad.md) · [Prototipo](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/prototipo) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 3 | Laboratorio 3 | [Reto de clase 3](../../5.%20Retos/Reto_Clase_3.md) | [Primer encuentro](lab-03/lab-03-reto-clase-3.md) · Grupo: [Guía](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-03/guia-primer-encuentro-y-responsabilidades.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
 | 4 | Laboratorio 4 | [Reto de clase 4](../../5.%20Retos/Reto%3AClase_4.md) | [Registro del Show & Tell](lab-04/lab-04-reto-clase-4.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 5 | Laboratorio 5 | [Reto de clase 5](../../5.%20Retos/Reto_Clase_5.md) | [Laboratorio 5](lab-05/README.md) · [Propuesta Sumobot](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/propuesta.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 6 | Laboratorio 6 | [Reto de clase 6](../../5.%20Retos/Reto_Clase_6.md) | [Mi proyecto: Blender desde 0](lab-06/tarea-reto-6.md) · [Repositorio](https://github.com/MarioLowPoly/Blender-desde-0) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 7 | Proyecto final | [Consigna](../../5.%20Retos/Proyecto_Final_mi-comunidad.md) | [Primer Encuentro](proyecto-final/README.md) · [Proyecto del Grupo 1](../../6.%20Grupos/grupo-1-arte-y-cultura/proyecto-final/proyecto-final.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 5 | Laboratorio 5 | [Reto de clase 5](../../5.%20Retos/Reto_Clase_5.md) | [Sumobot para principiantes](lab-05/lab-05-reto-clase-5.md) · Grupo: [Propuesta](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/propuesta.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 6 | Laboratorio 6 | [Reto de clase 6](../../5.%20Retos/Reto_Clase_6.md) | [Blender desde 0](lab-06/lab-06-reto-clase-6.md) · [Repositorio](https://github.com/MarioLowPoly/Blender-desde-0) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 7 | Proyecto final | [Consigna](../../5.%20Retos/Proyecto_Final_mi-comunidad.md) | [Primer Encuentro](proyecto-final/proyecto-final.md) · Grupo: [Proyecto](../../6.%20Grupos/grupo-1-arte-y-cultura/proyecto-final/proyecto-final.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
 
 ## 🚀 Proyectos
 
@@ -41,7 +41,7 @@ Esta carpeta reúne mis trabajos y entregas del curso.
 
 ## 🗂️ Estructura
 
-Los enunciados de los retos están en [`5. Retos/`](../../5.%20Retos/). Los trabajos en grupo (laboratorios 2, 3 y 5 y el proyecto final) están en la carpeta del [Grupo 1](../../6.%20Grupos/grupo-1-arte-y-cultura/); aquí cada carpeta enlaza a ellos.
+Cada carpeta tiene la tarea de su reto. Los enunciados están en [`5. Retos/`](../../5.%20Retos/). En los trabajos en grupo (laboratorios 2, 3 y 5 y el proyecto final), la tarea resume lo que hicimos y enlaza al trabajo completo en la carpeta del [Grupo 1](../../6.%20Grupos/grupo-1-arte-y-cultura/).
 
 ```
 Mario-Barsallo/
@@ -52,13 +52,13 @@ Mario-Barsallo/
 ├── lab-02/
 │   └── lab-02-reto-clase-2.md
 ├── lab-03/
-│   └── README.md
+│   └── lab-03-reto-clase-3.md
 ├── lab-04/
 │   └── lab-04-reto-clase-4.md
 ├── lab-05/
-│   └── README.md
+│   └── lab-05-reto-clase-5.md
 ├── lab-06/
-│   └── tarea-reto-6.md
+│   └── lab-06-reto-clase-6.md
 └── proyecto-final/
-    └── README.md
+    └── proyecto-final.md
 ```
