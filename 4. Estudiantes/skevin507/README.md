@@ -18,7 +18,7 @@ Esta es tu carpeta personal. Aqui subes todos tus trabajos y entregas del curso.
 
 **Repositorio:** https://github.com/skevin507/mi-comunidad-trazo-proyectos
 
-Comunidad de práctica de jóvenes del Rincón Clubhouse que convierten una idea en un proyecto propio con apoyo de Trazo Proyectos. Modalidad individual.
+Comunidad de práctica de jóvenes del Rincón Clubhouse que convierten una idea en un proyecto propio con apoyo de Trazo Proyectos. Modalidad grupal · Grupo 3: Ailyn Escobar · Alexandra Domínguez · Carlos Batista · Juan Quiel · Kevin Fernández.
 
 ## Como subir mis trabajos
 
