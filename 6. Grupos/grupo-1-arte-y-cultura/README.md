@@ -22,6 +22,7 @@
 | Reto 2 · Mapa de comunidad | [Tú Decides](reto-02/mapa-comunidad.md) |
 | Reto 3 · Recurso | [Guía para organizar un primer encuentro y distribuir responsabilidades](reto-03/guia-primer-encuentro-y-responsabilidades.md) |
 | Reto 5 · De exploradores a colaboradores Maker | [Guía de primeros pasos y FAQ para principiantes del Sumobot](reto-05/propuesta.md) |
+| Proyecto final · mi-comunidad | [Primer Encuentro · Guía y plantillas para organizar un primer encuentro](proyecto-final/proyecto-final.md) |
 
 ## Cómo subir una entrega de grupo
 
