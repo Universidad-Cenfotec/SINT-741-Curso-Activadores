@@ -21,12 +21,12 @@ Esta carpeta reúne mis trabajos y entregas del curso.
 
 | # | Trabajo | Reto | Documentos | Estado |
 |---|---------|------|------------|--------|
-| 1 | Laboratorio 1 | [Reto de clase 1](lab-01/guia-reto-1.md) | [Mi comunidad de práctica](lab-01/tarea-reto-1.md) · [Conclusión de la semana 1](lab-01/conclusion-semana-01.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 2 | Laboratorio 2 | [Reto de clase 2](lab-02/guia-reto-2.md) | [Mapa de Comunidad](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/mapa-comunidad.md) · [Prototipo](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/prototipo) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 3 | Laboratorio 3 | [Reto de clase 3](lab-03/guia-reto-3.md) | [Guía para organizar un primer encuentro](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-03/guia-primer-encuentro-y-responsabilidades.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 4 | Laboratorio 4 | [Reto de clase 4](lab-04/guia-reto-4.md) | [Registro del Show & Tell](lab-04/tarea-reto-4.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 5 | Laboratorio 5 | [Reto de clase 5](lab-05/guia-reto-5.md) | [Propuesta Sumobot](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/propuesta.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
-| 6 | Laboratorio 6 | [Reto de clase 6](lab-06/guia-reto-6.md) | [Blender desde 0](https://github.com/MarioLowPoly/Blender-desde-0) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 1 | Laboratorio 1 | [Reto de clase 1](../../5.%20Retos/Reto_Clase_1.md) | [Mi comunidad de práctica](lab-01/lab-01-reto-clase-1.md) · [Conclusión de la semana 1](lab-01/conclusion-semana-01.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 2 | Laboratorio 2 | [Reto de clase 2](../../5.%20Retos/Reto_Clase_2.md) | [Mi reto de clase 2](lab-02/lab-02-reto-clase-2.md) · [Mapa de Comunidad](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/mapa-comunidad.md) · [Prototipo](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-02/prototipo) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 3 | Laboratorio 3 | [Reto de clase 3](../../5.%20Retos/Reto_Clase_3.md) | [Guía para organizar un primer encuentro](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-03/guia-primer-encuentro-y-responsabilidades.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 4 | Laboratorio 4 | [Reto de clase 4](../../5.%20Retos/Reto%3AClase_4.md) | [Registro del Show & Tell](lab-04/lab-04-reto-clase-4.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 5 | Laboratorio 5 | [Reto de clase 5](../../5.%20Retos/Reto_Clase_5.md) | [Propuesta Sumobot](../../6.%20Grupos/grupo-1-arte-y-cultura/reto-05/propuesta.md) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
+| 6 | Laboratorio 6 | [Reto de clase 6](../../5.%20Retos/Reto_Clase_6.md) | [Mi proyecto: Blender desde 0](lab-06/tarea-reto-6.md) · [Repositorio](https://github.com/MarioLowPoly/Blender-desde-0) | ![Entregado](https://img.shields.io/badge/-Entregado-2EA043?style=flat-square) |
 | 7 | Proyecto final | | `proyecto-final/` | ![Pendiente](https://img.shields.io/badge/-Pendiente-8B949E?style=flat-square) |
 
 ## 🚀 Proyectos
@@ -40,29 +40,18 @@ Esta carpeta reúne mis trabajos y entregas del curso.
 
 ## 🗂️ Estructura
 
-Cada laboratorio tiene la **guía del reto** (`guia-reto-N.md`) y la **tarea hecha**.
+Los enunciados de los retos están en [`5. Retos/`](../../5.%20Retos/) y los trabajos en grupo, en la carpeta del [Grupo 1](../../6.%20Grupos/grupo-1-arte-y-cultura/).
 
 ```
 Mario-Barsallo/
 ├── README.md
 ├── lab-01/
-│   ├── guia-reto-1.md
-│   ├── tarea-reto-1.md
+│   ├── lab-01-reto-clase-1.md
 │   └── conclusion-semana-01.md
 ├── lab-02/
-│   ├── guia-reto-2.md
-│   └── mapa-comunidad.md
-├── lab-03/
-│   ├── guia-reto-3.md
-│   └── guia-primer-encuentro-y-responsabilidades.md
+│   └── lab-02-reto-clase-2.md
 ├── lab-04/
-│   ├── guia-reto-4.md
-│   └── tarea-reto-4.md
-├── lab-05/
-│   ├── guia-reto-5.md
-│   └── propuesta.md
-├── lab-06/
-│   ├── guia-reto-6.md
-│   └── tarea-reto-6.md
-└── proyecto-final/
+│   └── lab-04-reto-clase-4.md
+└── lab-06/
+    └── tarea-reto-6.md
 ```
