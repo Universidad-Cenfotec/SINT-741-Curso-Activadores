@@ -24,6 +24,8 @@
 |---|---|
 | Reto 2 · Mapa de comunidad | [Voces de mi Barrio](reto-02/mapa-comunidad.md) |
 | Reto 3 · Recurso | [Errores comunes de principiantes en GitHub](reto-03/errores-comunes-github-principiantes.md) |
+| Reto 5 · Propuesta | [Guía de bienvenida en español para OpenQuadruped](reto-05/propuesta.md) |
+| Proyecto final · mi-comunidad | [Activación Comunitaria · copia en el curso](proyecto-final/README.md) · [Repositorio original](https://github.com/viancavc/mi-comunidad-proyecto-final) |
 
 ## Cómo subir una entrega de grupo
 
