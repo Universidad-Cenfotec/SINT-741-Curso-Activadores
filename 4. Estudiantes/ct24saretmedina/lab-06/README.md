@@ -1,3 +1,15 @@
+> **Laboratorio 6 · Saret Medina (`ct24-saretmedina`) · entrega incompleta.** Repositorio: https://github.com/ct24-saretmedina/RescU
+>
+> | Requisito | Estado |
+> |---|---|
+> | `README.md` en el repositorio | Pendiente: el texto está en `RescU.md` |
+> | `CONTRIBUTING.md` | Pendiente |
+> | Al menos un Issue | Pendiente |
+> | Al menos un Pull Request integrado | Pendiente |
+> | Declaración de uso de IA | Pendiente |
+>
+> Ficha preparada durante la revisión final del curso. Debajo se conserva la descripción del proyecto escrita por Saret.
+
 # 🐾 RescU RefugioDigital
 
 **RescU RefugioDigital** es una plataforma colaborativa y solidaria diseñada para conectar a refugios o asociaciones de rescate animal con personas interesadas en adoptar o ayudar a animales vulnerables en la calle.
@@ -40,11 +52,11 @@ Actualmente el proyecto cuenta con un **prototipo funcional** con interfaces res
 ### Opción 2: Versión Flutter (Móvil)
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/RescU-RefugioDigital.git
+   git clone https://github.com/ct24-saretmedina/RescU.git
    ```
 2. Entra al directorio e instala las dependencias:
    ```bash
-   cd RescU-RefugioDigital
+   cd RescU
    flutter pub get
    ```
 3. Ejecuta la aplicación:
