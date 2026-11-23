@@ -20,6 +20,8 @@
 |---|---|
 | Reto 2 · Mapa de comunidad | [VisualNotes](reto-02/mapa-comunidad.md) |
 | Reto 3 · Recurso | [Cómo ejecutar y continuar VisualNotes AI](reto-03/como-ejecutar-y-continuar-visualnotes-ai.md) |
+| Reto 5 · Propuesta | [Propuesta del Reto 5](reto-05/propuesta.md) |
+| Proyecto final · mi-comunidad | [VisualNotes AI · copia en el curso](mi-comunidad-visualnotesia/README.md) · [Repositorio oficial](https://github.com/nexusdigitalsolutionspa-maker/visualnotesia) |
 
 ## Cómo subir una entrega de grupo
 
