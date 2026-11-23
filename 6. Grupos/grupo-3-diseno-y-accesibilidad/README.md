@@ -22,6 +22,7 @@
 |---|---|
 | Reto 2 · Mapa de comunidad | [MakeralDia](reto-02/mapa-comunidad.md) |
 | Reto 3 · Recurso | [ModuBot · robot modular abierto para la IdeaBoard](reto-03/README.md) |
+| Reto 5 · Propuesta | [Mi primer robot con impresión 3D](reto-05/Propuesta.md) |
 
 ## Cómo subir una entrega de grupo
 
