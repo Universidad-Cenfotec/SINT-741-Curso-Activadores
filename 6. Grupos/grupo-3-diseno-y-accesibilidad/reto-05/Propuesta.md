@@ -10,8 +10,8 @@ Grupo 3 · Diseño y Accesibilidad
 | Aylin Escobar | [@aescobarg19] | Presentación (pitch) |
 | Carlos Batista | [@cbatistaq-art] | Presentación (pitch) |
 | Juan Antonio Quiel Hernández | [@jquielh1508] | Redacción y publicación; presentación (pitch) |
-| Kevin Fernández | [@Skevin507] | Navegación: identificar la idea principal del repositorio |
-| Pablo Daniel Hernández Meléndezz | [@pablo-hdz] | Investigación con IA y diseño de la propuesta de mejora |
+| Kevin Fernández | [@skevin507] | Navegación: identificar la idea principal del repositorio |
+| Pablo Daniel Hernández Meléndez | [@pablo-hdz] | Investigación con IA y diseño de la propuesta de mejora |
 
 ## Repositorio analizado
 
