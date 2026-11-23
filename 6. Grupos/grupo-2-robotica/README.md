@@ -22,6 +22,9 @@
 | Reto | Entrega |
 |---|---|
 | Reto 2 · Mapa de comunidad | [Kit de Retos Animatrónicos Expresivos](reto-02/mapa-comunidad.md) |
+| Reto 3 · Recurso | [Guía del Reto 3](Reto-03/reto-03.md) |
+| Reto 5 · Propuesta | [Kit de iniciación a la robótica cuadrúpeda](reto-05/propuesta.md) |
+| Proyecto final · mi-comunidad | [mi-comunidad-grupo-2-robotica](https://github.com/haza507/robotica) |
 
 ## Cómo subir una entrega de grupo
 
