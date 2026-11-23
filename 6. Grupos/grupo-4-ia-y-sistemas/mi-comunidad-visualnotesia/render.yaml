@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: visualnotes-ai
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ENABLE_AUTH
+        value: "false"
+      - key: VISUALNOTES_DB
+        value: /app/data/visualnotes.db

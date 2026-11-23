@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compilar módulos de Python (validación de sintaxis)
+        run: python -m py_compile app.py gemini_service.py database.py
+
+      - name: Verificar que no haya secretos obvios versionados
+        run: |
+          if git grep -nE "AQ\.Ab8|AIza[0-9A-Za-z_\-]{20,}" -- . ':!*.md'; then
+            echo "::error::Se detectó una posible clave de API en el código."
+            exit 1
+          fi
+          echo "No se detectaron claves en el código."

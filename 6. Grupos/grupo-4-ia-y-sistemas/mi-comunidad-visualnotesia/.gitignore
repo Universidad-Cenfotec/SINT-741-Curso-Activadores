@@ -1,0 +1,37 @@
+# ==== Entorno y secretos (NUNCA subir el .env real) ====
+.env
+.env.local
+*.env
+
+# ==== Base de datos local ====
+*.db
+*.sqlite
+*.sqlite3
+visualnotes.db
+data/
+
+# ==== Python ====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# ==== Runtime ====
+server.pid
+*.log
+
+# ==== Entregables / material académico privado ====
+Entregable.zip
+Reto-2/
+
+# ==== Sistema operativo / editores ====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ==== Carpetas de producción (independientes del repositorio) ====
+produccion/
